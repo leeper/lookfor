@@ -11,7 +11,7 @@
 .in_attributes <- function(x, what, ignore.case = FALSE, ...) {
     a <- attributes(x)
     if(length(a))
-        structure(lookin(a, what, ...), location = "attributes")
+        structure(lookin(a, what, check.attributes = FALSE, ...), location = "attributes")
     else
         structure(list(), location = "attributes")
 }
@@ -63,7 +63,7 @@ lookin.data.frame <- function(x, what, ...){
          variables = sapply(x, lookin, what = what, ...))
 }
 
-lookin.list <- function(x, what, ...){
+lookin.list <- function(x, what, check.attributes = TRUE, ...){
     out1 <- c(.in_comment(x, what, ...))
     a <- attributes(x)
     a$names <- NULL
