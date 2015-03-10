@@ -1,85 +1,58 @@
 .in_values <- function(x, what, ignore.case = FALSE, ...) {
     w <- which(grepl(what, x, ...))
-    structure(setNames(w, x[w]), location = "values")
-}
-
-.in_names <- function(x, what, ignore.case = FALSE, ...) {
-    n <- names(x)
-    if(!is.null(n)) {
-        w <- which(grepl(what, n, ...))
-        structure(setNames(w, n[w]), location = "names")
-    } else {
-        structure(list(), location = "names")
-    }
-}
-
-.in_colnames <- function(x, what, ignore.case = FALSE, ...) {
-    w <- which(grepl(what, colnames(x), ...))
-    structure(setNames(w, colnames(x)[w]), location = "colnames")
-}
-
-.in_rownames <- function(x, what, ignore.case = FALSE, ...) {
-    w <- which(grepl(what, rownames(x), ...))
-    structure(setNames(w, rownames(x)[w]), location = "rownames")
+    structure(list(setNames(w, x[w])), location = "values")
 }
 
 .in_comment <- function(x, what, ignore.case = FALSE, ...) {
-    cmt <- comment(x)
-    if(!is.null(cmt)) {
-        w <- which(grepl(what, cmt, ...))
-        structure(setNames(w, cmt), location = "comment")
-    } else {
-        structure(list(), location = "comment")
-    }
-}
-
-.in_levels <- function(x, what, ignore.case = FALSE, ...) {
-    w <- which(grepl(what, levels(x), ...))
-    structure(setNames(w, levels(x)[w]), location = "levels")
+    w <- which(grepl(what, comment(x), ...))
+    structure(list(setNames(w, comment(x)[w])), location = "comment")
 }
 
 .in_attributes <- function(x, what, ignore.case = FALSE, ...) {
     a <- attributes(x)
-    a$class <- NULL
-    a$levels <- NULL
     if(length(a))
         structure(lookin(a, what, ...), location = "attributes")
     else
-        structure(NULL, location = "attributes")
+        structure(list(), location = "attributes")
 }
 
 
 lookin <- function(x, what, ...) UseMethod("lookin")
 
 lookin.default <- function(x, what, ...) {
-    
+    structure(setNames(.in_values(x, what, ...), "values"), class = "lookin")
 }
 
 lookin.character <- function(x, what, ...){
-    c(.in_values(x, what, ...),
-      .in_comment(x, what, ...),
-      #.in_attributes(x, what, ...),
-      .in_names(x, what, ...))
+    structure(
+    c(setNames(.in_values(x, what, ...), "values"),
+      setNames(.in_comment(x, what, ...), "comment"),
+      if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
+    class = "lookin")
 }
 
 lookin.numeric <- function(x, what, ...){
-    c(.in_comment(x, what, ...),
-      #.in_attributes(x, what, ...),
-      .in_names(x, what, ...))
+    structure(
+    c(setNames(.in_values(x, what, ...), "values"),
+      setNames(.in_comment(x, what, ...), "comment"),
+      if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
+    class = "lookin")
 }
 
 lookin.logical <- function(x, what, ...){
-    c(.in_values(x, what, ...),
-      .in_comment(x, what, ...),
-      #.in_attributes(x, what, ...),
-      .in_names(x, what, ...))
+    structure(
+    c(setNames(.in_values(x, what, ...), "values"),
+      setNames(.in_comment(x, what, ...), "comment"),
+      if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
+    class = "lookin")
 }
 
 lookin.factor <- function(x, what, ...){
-    c(.in_levels(x, what, ...),
-      .in_comment(x, what, ...),
-      #.in_attributes(x, what, ...),
-      .in_names(x, what, ...))
+    structure(
+    c(setNames(.in_values(x, what, ...), "values"),
+      setNames(.in_comment(x, what, ...), "comment"),
+      if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
+    class = "lookin")
 }
 
 lookin.data.frame <- function(x, what, ...){
@@ -91,18 +64,26 @@ lookin.data.frame <- function(x, what, ...){
 }
 
 lookin.list <- function(x, what, ...){
-    c(.in_names(names(x), what, ...),
-      #.in_attributes(x, what, ...),
-      .in_comment(x, what, ...),
-      sapply(x, lookin, what = what, ...))
+    out1 <- c(.in_comment(x, what, ...))
+    a <- attributes(x)
+    a$names <- NULL
+    if(length(a)) {
+        out1 <- c(out1, .in_attributes(x, what, ...))
+    }
+    out2 <- list()
+    for(i in seq_along(x)) {
+        out2[[i]] <- lookin(x[[i]], what, ...)
+    }
+    structure((c(setNames(out1, "comment"), setNames(out2, names(x)))),
+    class = "lookin")
 }
 
 lookin.matrix <- function(x, what, ...){
     if(class(x) != 'matrix')
         stop("Object must be a matrix")
-    c(.in_rownames(x, what, ...),
-      .in_colnames(x, what, ...),
-      #.in_attributes(x, what, ...),
-      .in_comment(x, what, ...),
-      .in_values(x, what, ...))
+    structure(
+    c(setNames(.in_values(x, what, ...), "values"),
+      setNames(.in_comment(x, what, ...), "comment"),
+      if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
+    class = "lookin")
 }
