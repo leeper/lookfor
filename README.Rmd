@@ -24,4 +24,73 @@ install_github("leeper/lookfor")
 
 ## Examples ##
 
-Coming soon...
+Stata's `lookfor` command searches variables and variable labels for an exact matching text string:
+
+```
+. webuse auto
+(1978 Automobile Data)
+
+. lookfor weight
+
+              storage   display    value
+variable name   type    format     label      variable label
+---------------------------------------------------------------------
+weight          int     %8.0gc                Weight (lbs.)
+
+. lookfor ft
+
+              storage   display    value
+variable name   type    format     label      variable label
+---------------------------------------------------------------------
+trunk           int     %8.0g                 Trunk space (cu. ft.)
+turn            int     %8.0g                 Turn Circle (ft.)
+```
+
+This is helpful and something easily replicated by searching within the `names` attribute of a data.frame. But R allows multiple objects to be present at one time, meaning that it would be time consuming to `grep` the names of all data.frames that might be active in memory at any given point in time. Similarly, those R objects are also themselves named, have numerous other attributes (`rownames`, `colnames`, `levels`, `class`, etc.), and might be stored within lists or environments. While the `lookfor` command in Stata is helpful, it's actually solving a relatively simple problem. Porting `lookfor` to R requires a much more robust solution for searching many different features of potentially numerous data objects stored in various parts of the R environment.
+
+The major weakness of Stata's `lookfor` command is that it relies only on a plain text, exact matching search algorithm. This makes it difficult to search for variables or labels that match a pattern (e.g., a pattern that migth easily be described by a regular expression). As a result, the R port uses `grepl` to find matches, meaning that regular expressions are used by default when trying to find something.
+
+### Look in a data.frame ###
+
+```{r}
+data(USArrests)
+
+# look for observation
+lookin(USArrests, "Alaska")
+
+# look for variable
+lookin(USArrests, "Assault")
+```
+
+
+### Look in an environment ###
+
+```{r, results="hold"}
+x <- new.env()
+x$mtcars <- mtcars
+x$cars <- letters[1:10]
+x$cards <- 1:5
+lookin(x, "car")
+```
+
+
+### Look in a list ###
+
+```{r}
+m <- lm(mpg ~ cyl, data = mtcars)
+lookin(m, "mpg")
+```
+
+
+### Look everywhere ###
+
+```{r}
+data(mtcars)
+lookfor("Mazda")
+```
+
+### Look using regular expression ###
+
+```{r}
+# NEED EXAMPLES HERE
+```

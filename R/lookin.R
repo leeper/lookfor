@@ -23,7 +23,7 @@ lookin.default <- function(x, what, ...) {
     structure(setNames(.in_values(x, what, ...), "values"), class = "lookin")
 }
 
-lookin.character <- function(x, what, ...){
+lookin.character <- function(x, what, ...) {
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
@@ -31,7 +31,7 @@ lookin.character <- function(x, what, ...){
     class = "lookin")
 }
 
-lookin.numeric <- function(x, what, ...){
+lookin.numeric <- function(x, what, ...) {
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
@@ -39,7 +39,7 @@ lookin.numeric <- function(x, what, ...){
     class = "lookin")
 }
 
-lookin.logical <- function(x, what, ...){
+lookin.logical <- function(x, what, ...) {
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
@@ -47,7 +47,7 @@ lookin.logical <- function(x, what, ...){
     class = "lookin")
 }
 
-lookin.factor <- function(x, what, ...){
+lookin.factor <- function(x, what, ...) {
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
@@ -55,7 +55,7 @@ lookin.factor <- function(x, what, ...){
     class = "lookin")
 }
 
-lookin.data.frame <- function(x, what, ...){
+lookin.data.frame <- function(x, what, ...) {
     if(class(x) != 'data.frame')
         stop("Object must be a data.frame")
     list(attributes = .in_attributes(x, what, ...),
@@ -63,7 +63,7 @@ lookin.data.frame <- function(x, what, ...){
          variables = sapply(x, lookin, what = what, ...))
 }
 
-lookin.list <- function(x, what, check.attributes = TRUE, ...){
+lookin.list <- function(x, what, check.attributes = TRUE, ...) {
     out1 <- c(.in_comment(x, what, ...))
     a <- attributes(x)
     a$names <- NULL
@@ -78,7 +78,7 @@ lookin.list <- function(x, what, check.attributes = TRUE, ...){
     class = "lookin")
 }
 
-lookin.matrix <- function(x, what, ...){
+lookin.matrix <- function(x, what, ...) {
     if(class(x) != 'matrix')
         stop("Object must be a matrix")
     structure(
@@ -86,4 +86,9 @@ lookin.matrix <- function(x, what, ...){
       setNames(.in_comment(x, what, ...), "comment"),
       if(!is.null(attributes(x))) .in_attributes(x, what, ...) else NULL),
     class = "lookin")
+}
+
+lookin.environment <- function(x, what, ...) {
+    s <- ls(x)
+    lapply(s, lookin, what = what)
 }
