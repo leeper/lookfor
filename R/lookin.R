@@ -82,6 +82,14 @@ lookin.list <- function(x, what, check.attributes = TRUE, ...) {
     structure((c(out1, setNames(out2, names(x)))), class = "lookin.list")
 }
 
+lookin.pairlist <- function(x, what, ...) {
+    out1 <- list()
+    for(i in seq_along(x))
+        out1[[i]] <- .in_values(as.character(x[[i]]), what, ...)
+    out2 <- .in_values(names(x), what, ...)
+    structure(c(names = out2, values = out1), class = "lookin.pairlist")
+}
+
 lookin.matrix <- function(x, what, ...) {
     if(class(x) != 'matrix')
         stop("Object must be a matrix")
@@ -101,6 +109,6 @@ lookin.environment <- function(x, what, ...) {
 
 lookin.function <- function(x, what, ...) {
     f <- lookin(formals(x), what, ...)
-    b <- as.character(body(x), what, ...)
-    structure(list(arguments = f, body = b, class = "lookin.function"))
+    b <- lookin(as.character(body(x)), what, ...)
+    structure(list(arguments = f, body = b), class = "lookin.function")
 }
