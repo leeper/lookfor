@@ -21,9 +21,7 @@ lookfor <- function(what, ls_opts = list(name = ".GlobalEnv"), ...){
     structure(list(environment = s1, objects = d, namespaces = ns_names, fromNamespaces = in_ns), class = "lookfor")
 }
 
-# print.lookfor <- function(x, ...){
-#     anywhere <- rapply(x, function(z) if(length(z)) TRUE else FALSE, how = "replace")
-#     for(i in seq_along(x))
-#         cat(x[[i]]$object, '\t\t', x[[i]]$location,'\n')
-#     return(invisible(x))
-# }
+print.lookfor <- function(x, ...){
+    anywhere <- rapply(x, function(z) if(length(z)) TRUE else FALSE, how = "replace")
+    return(anywhere)
+}

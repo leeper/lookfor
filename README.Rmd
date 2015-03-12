@@ -93,5 +93,11 @@ lookfor("Mazda")
 ### Look using regular expression ###
 
 ```{r}
-# NEED EXAMPLES HERE
+data(mtcars)
+
+# Look for car names containing letters and numbers (anywhere)
+lookfor("[[:alpha:]]+ [[:digit:]]")
+
+# Look for car names containing letters and numbers (in mtcars)
+lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ```
