@@ -1,6 +1,20 @@
-\docType{package}
 \name{lookfor}
+\alias{lookin}
 \alias{lookfor}
-\alias{lookfor-package}
-\title{Find what you're looking for}
-\description{lookfor is an R port of Stata's \code{lookfor} command, which helps you find stuff you're looking for inside a dataset (e.g., variables, variable values, variable labels, etc.).}
+\title{Look for something somewhere}
+\description{Look for something in an object or anywhere in the active workspace}
+\usage{
+lookfor(what, \dots)
+lookin(x, what, \dots)
+}
+\arguments{
+    \item{x}{An object to look in.}
+    \item{what}{What to look for: either a character string or a regular expression.}
+    \item{\dots}{Additional arguments passed to methods, and eventually passed to \code{grepl}.}
+}
+\details{Find something you're looking for in a specified object, or anywhere in the active workspace.}
+\value{An object of class \dQuote{lookfor} or \dQuote{lookin}.}
+\author{Thomas J. Leeper}
+%\references{}
+%\seealso{}
+%\examples{}
