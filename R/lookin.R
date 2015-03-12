@@ -20,7 +20,10 @@
 lookin <- function(x, what, ...) UseMethod("lookin")
 
 lookin.default <- function(x, what, ...) {
-    structure(setNames(.in_values(x, what, ...), "values"), class = "lookin")
+    if(is.list(x))
+        lookin.list(x, what, ...)
+    else 
+        structure(setNames(.in_values(x, what, ...), "values"), class = "lookin")
 }
 
 lookin.character <- function(x, what, ...) {
@@ -64,18 +67,19 @@ lookin.data.frame <- function(x, what, ...) {
 }
 
 lookin.list <- function(x, what, check.attributes = TRUE, ...) {
-    out1 <- c(.in_comment(x, what, ...))
+    out1 <- .in_comment(x, what, ...)
     a <- attributes(x)
     a$names <- NULL
     if(length(a)) {
-        out1 <- c(out1, .in_attributes(x, what, ...))
+        out1 <- list(comment = out1, attributes = .in_attributes(x, what, ...))
+    } else {
+        out1 <- list(comment = out1)
     }
     out2 <- list()
-    for(i in seq_along(x)) {
+    for(i in length(x)) {
         out2[[i]] <- lookin(x[[i]], what, ...)
     }
-    structure((c(setNames(out1, "comment"), setNames(out2, names(x)))),
-    class = "lookin.list")
+    structure((c(out1, setNames(out2, names(x)))), class = "lookin.list")
 }
 
 lookin.matrix <- function(x, what, ...) {
