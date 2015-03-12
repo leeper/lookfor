@@ -1,5 +1,6 @@
 export(lookfor)
 export(lookin)
+S3method(lookin, "default")
 S3method(lookin, "character")
 S3method(lookin, "numeric")
 S3method(lookin, "logical")
