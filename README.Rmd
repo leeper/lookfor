@@ -53,6 +53,7 @@ The major weakness of Stata's `lookfor` command is that it relies only on a plai
 ### Look in a data.frame ###
 
 ```{r}
+library("lookfor")
 data(USArrests)
 
 # look for observation
