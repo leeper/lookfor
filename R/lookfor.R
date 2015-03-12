@@ -7,7 +7,7 @@ lookfor <- function(what, ls_opts = list(name = ".GlobalEnv"), ...){
     s1 <- lookin(s, what)
     
     # look for objects in objects from global environment
-    d <- lapply(s, lookin, what = what, ...)
+    d <- lapply(mget(s, envir = parent.frame()), lookin, what = what, ...)
     
     # look for objects in loaded namespaces
     ns <- loadedNamespaces()
@@ -17,8 +17,7 @@ lookfor <- function(what, ls_opts = list(name = ".GlobalEnv"), ...){
     # return value should be a list with the string matching the search, along with details of its position
     # big challenge is doing this recursively because, e.g., lists of lists of dataframes would be really difficult to search
     
-    class(d) <- 'lookfor'
-    return(d)
+    structure(list(environment = s1, objects = d, namespaces = ns, fromNamespaces = n), class = "lookfor")
 }
 
 # print.lookfor <- function(x, ...){
