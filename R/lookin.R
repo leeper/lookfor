@@ -16,7 +16,6 @@
         structure(list(), location = "attributes")
 }
 
-
 lookin <- function(x, what, ...) UseMethod("lookin")
 
 lookin.default <- function(x, what, ...) {

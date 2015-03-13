@@ -22,6 +22,8 @@ lookfor <- function(what, ls_opts = list(name = ".GlobalEnv"), ...){
 }
 
 print.lookfor <- function(x, ...){
-    anywhere <- rapply(x, function(z) if(length(z)) TRUE else FALSE, how = "replace")
-    return(anywhere)
+    #anywhere <- rapply(x, function(z) if(length(z)) TRUE else FALSE, how = "replace")
+    anywhere <- rapply(x, I)
+    print(anywhere)
+    invisible(x)
 }
