@@ -55,6 +55,18 @@ The major weakness of Stata's `lookfor` command is that it relies only on a plai
 
 ```r
 library("lookfor")
+```
+
+```
+## 
+## Attaching package: 'lookfor'
+## 
+## The following objects are masked _by_ '.GlobalEnv':
+## 
+##     lookfor, lookin
+```
+
+```r
 data(USArrests)
 
 # look for observation
@@ -446,6 +458,10 @@ data(mtcars)
 lookfor("Mazda")
 ```
 
+```
+## lookfor did not find 'Mazda' anywhere
+```
+
 ### Look using regular expression ###
 
 
@@ -454,6 +470,10 @@ data(mtcars)
 
 # Look for car names containing letters and numbers (anywhere)
 lookfor("[[:alpha:]]+ [[:digit:]]")
+```
+
+```
+## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere
 ```
 
 ```r
