@@ -70,7 +70,5 @@ print.lookfor <- function(x, ...){
         }
         cat("\n")
     }
-    #anywhere <- rapply(x, I)
-    #print(anywhere)
     invisible(x)
 }

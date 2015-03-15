@@ -58,7 +58,16 @@ library("lookfor")
 ```
 
 ```
+<<<<<<< HEAD
 ## Error in library("lookfor"): there is no package called 'lookfor'
+=======
+## 
+## Attaching package: 'lookfor'
+## 
+## The following objects are masked _by_ '.GlobalEnv':
+## 
+##     lookfor, lookin
+>>>>>>> 15ddf325b2608b68ecfdc2b87bce00ffd2627618
 ```
 
 ```r
@@ -832,6 +841,7 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
+<<<<<<< HEAD
 ## $values
 ## integer(0)
 ## 
@@ -844,6 +854,13 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## attr(,"what")
 ## [1] "[[:alpha:]]+ [[:digit:]]"
 ```
+=======
+## lookfor did not find 'Mazda' anywhere
+```
+
+### Look using regular expression ###
+
+>>>>>>> 15ddf325b2608b68ecfdc2b87bce00ffd2627618
 
 ```
 ## Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[3L]]':
@@ -867,7 +884,16 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
+<<<<<<< HEAD
 ## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[4L]]'. Bummer!
+=======
+## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere
+```
+
+```r
+# Look for car names containing letters and numbers (in mtcars)
+lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
+>>>>>>> 15ddf325b2608b68ecfdc2b87bce00ffd2627618
 ```
 
 ```
