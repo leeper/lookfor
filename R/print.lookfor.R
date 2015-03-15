@@ -26,12 +26,9 @@ print.lookfor <- function(x, ...){
     }
     if(any(unlist(any_objects))) {
         cat("Within objects from global environment:\n")
-        
-        # method dispatch on all the lookin.* objects
-        #for(i in seq_along(x$objects)) {
-            #print(x$objects[[i]])
-        #}
-        
+        for(i in seq_along(x$objects)) {
+            print(x$objects[[i]])
+        }
         cat("coming soon...\n\n")
     }
     if(any(unlist(any_search))) {

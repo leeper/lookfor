@@ -1,6 +1,9 @@
 .in_values <- function(x, what, ignore.case = FALSE, ...) {
     w <- which(grepl(what, x, ...))
-    structure(list(setNames(w, x[w])), location = "values")
+    if(length(w))
+        structure(list(setNames(w, x[w])), location = "values")
+    else
+        structure(list(integer()), location = "values")
 }
 
 .in_comment <- function(x, what, ignore.case = FALSE, ...) {
@@ -72,27 +75,22 @@ lookin.data.frame <- function(x, what, ...) {
     if(class(x) != 'data.frame')
         stop("Object must be a data.frame")
     structure(list(attributes = .in_attributes(x, what, ...),
-         comment = .in_comment(x, what, ...),
-         variables = lapply(x, lookin, what = what, ...)), 
-         class = "lookin.data.frame",
-         object = deparse(substitute(x)),
-         what = what)
+                   comment = .in_comment(x, what, ...),
+                   variables = lapply(x, lookin, what = what, ...)), 
+              class = "lookin.data.frame",
+              object = deparse(substitute(x)),
+              what = what)
 }
 
 lookin.list <- function(x, what, check.attributes = TRUE, ...) {
-    out1 <- .in_comment(x, what, ...)
-    a <- attributes(x)
-    a$names <- NULL
-    if(length(a)) {
-        out1 <- list(comment = out1, attributes = .in_attributes(x, what, ...))
-    } else {
-        out1 <- list(comment = out1)
-    }
-    out2 <- list()
-    for(i in length(x)) {
-        out2[[i]] <- lookin(x[[i]], what, ...)
-    }
-    structure((c(out1, setNames(out2, names(x)))), 
+    out1 <- lapply(x, lookin, what = what, ...)
+    out1 <- setNames(out1, names(x))
+    out1$comment <- .in_comment(x, what, ...)
+    z <- attributes(x)
+    z$names <- NULL
+    if(length(z))
+        out1$attributes <- lapply(z, lookin, what = what, ...)
+    structure(out1, 
               class = "lookin.list",
               object = deparse(substitute(x)),
               what = what)
