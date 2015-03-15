@@ -48,9 +48,11 @@ turn            int     %8.0g                 Turn Circle (ft.)
 
 This is helpful and something easily replicated by searching within the `names` attribute of a data.frame. But R allows multiple objects to be present at one time, meaning that it would be time consuming to `grep` the names of all data.frames that might be active in memory at any given point in time. Similarly, those R objects are also themselves named, have numerous other attributes (`rownames`, `colnames`, `levels`, `class`, etc.), and might be stored within lists or environments. While the `lookfor` command in Stata is helpful, it's actually solving a relatively simple problem. Porting `lookfor` to R requires a much more robust solution for searching many different features of potentially numerous data objects stored in various parts of the R environment.
 
-The major weakness of Stata's `lookfor` command is that it relies only on a plain text, exact matching search algorithm. This makes it difficult to search for variables or labels that match a pattern (e.g., a pattern that migth easily be described by a regular expression). As a result, the R port uses `grepl` to find matches, meaning that regular expressions are used by default when trying to find something.
+The major weakness of Stata's `lookfor` command is that it relies only on a plain text, exact matching search algorithm. This makes it difficult to search for variables or labels that match a pattern (e.g., a pattern that might easily be described by a regular expression). As a result, the R port uses `grepl` to find matches, meaning that regular expressions are used by default when trying to find something and arguments can be passed via `...` to control the behavior of `grepl` (e.g., setting `fixed=TRUE` will match an exact string, and `perl=TRUE` will use Perl-style regular expressions).
 
 ### Look in a data.frame ###
+
+A basic use case is to search for an observation or a variable within a dataset.
 
 ```{r}
 library("lookfor")
@@ -66,6 +68,8 @@ lookin(USArrests, "Assault")
 
 ### Look in an environment ###
 
+Relatedly, it is possible to search for objects within an environment (and values or attributes within those objects).
+
 ```{r, results="hold"}
 x <- new.env()
 x$mtcars <- mtcars
@@ -77,6 +81,8 @@ lookin(x, "car")
 
 ### Look in a list ###
 
+And the same can be applied to a potentially deeply nested list.
+
 ```{r}
 m <- lm(mpg ~ cyl, data = mtcars)
 lookin(m, "mpg")
@@ -85,12 +91,16 @@ lookin(m, "mpg")
 
 ### Look everywhere ###
 
+Lastly, the `lookfor` command can be used to look anywhere (within `.GlobalEnv`, the R search path, objects within objects on the search path, loaded namespaces, etc.).
+
 ```{r}
 data(mtcars)
 lookfor("Mazda")
 ```
 
 ### Look using regular expression ###
+
+As noted above, Stata's `lookfor` command can only match exact/partial character strings. The R port by uses `grepl`, meaning that regular expressions are supported by default, thus allowing for complex pattern matching.
 
 ```{r}
 data(mtcars)
@@ -101,3 +111,18 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 # Look for car names containing letters and numbers (in mtcars)
 lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ```
+
+### Search `comment()` values ###
+
+R's `comment()` function is an underutilized feature that allows users to attach hidden comments to R objects. This is intended (see `? comment`) for helping to annotate R objects with relevant metadata. The value of `comment()` for an object is `NULL` unless it has been set, in which case it is usually a character vector of length 1 (or possibly greater). `lookfor` searches `comment()` values automatically, allowing you to make better use of these annotations.
+
+```{r}
+m1 <- lm(mpg ~ cyl, data = mtcars)
+comment(m1) <- "model using continuous cylinder"
+
+m2 <- lm(mpg ~ factor(cyl), data = mtcars)
+comment(m2) <- "model using factor of cylinder"
+
+lookfor("model using", fixed = TRUE)
+```
+
