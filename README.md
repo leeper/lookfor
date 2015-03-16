@@ -65,10 +65,6 @@ lookin(USArrests, "Alaska")
 
 ```
 ## Matches found for 'Alaska' in attributes(USArrests):
-## lookfor did not find 'Alaska' anywhere in 'X[[1L]]'. Bummer!
-## 
-## lookfor did not find 'Alaska' anywhere in 'X[[2L]]'. Bummer!
-## 
 ## Matches found for 'Alaska' in 'X[[3L]]':
 ```
 
@@ -95,15 +91,6 @@ lookin(USArrests, "Assault")
 ```
 ##    Match Position
 ##  Assault        2
-```
-
-```
-## lookfor did not find 'Assault' anywhere in 'X[[2L]]'. Bummer!
-## 
-## lookfor did not find 'Assault' anywhere in 'X[[3L]]'. Bummer!
-```
-
-```
 ## [[1]]
 ## integer(0)
 ## 
@@ -179,21 +166,6 @@ lookfor("Mazda")
 
 ```
 ## Matches found for 'Mazda' in 'x':
-## lookfor did not find 'Mazda' anywhere in 'X[[1L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[2L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[3L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[4L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[5L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[6L]]'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'x'. Bummer!
-## 
-## lookfor did not find 'Mazda' anywhere in 'X[[8L]]'. Bummer!
 ```
 
 ```
@@ -222,21 +194,6 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 
 ```
 ## Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[1L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[2L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[3L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[4L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[5L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[6L]]'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'x'. Bummer!
-## 
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[8L]]'. Bummer!
 ```
 
 ```
@@ -250,8 +207,6 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 
 ```
 ## Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[1L]]'. Bummer!
-## 
 ## Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
 ```
 
@@ -270,13 +225,6 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ##        Fiat 128       18
 ##   Porsche 914-2       27
 ##      Volvo 142E       32
-```
-
-```
-## lookfor did not find '[[:alpha:]]+ [[:digit:]]' anywhere in 'X[[3L]]'. Bummer!
-```
-
-```
 ## [[1]]
 ## integer(0)
 ## 
@@ -309,21 +257,6 @@ lookfor("model using", fixed = TRUE)
 
 ```
 ## Matches found for 'model using' in 'x':
-## lookfor did not find 'model using' anywhere in 'X[[1L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[2L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[3L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[4L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[5L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[6L]]'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'x'. Bummer!
-## 
-## lookfor did not find 'model using' anywhere in 'X[[8L]]'. Bummer!
 ```
 
 ```
