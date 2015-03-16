@@ -22,8 +22,8 @@ function(x, ...){
 
 print.lookin.data.frame <- function(x, ...){
     lv <- sapply(x$variables, function(z) { if(length(z[["values"]]) | length(z[["comment"]])) { TRUE } else { FALSE } })
-    aa <- any(rapply(x$attributes, length))
-    ac <- any(rapply(x$comment, length))
+    aa <- any(unlist(rapply(x$attributes, length)))
+    ac <- any(unlist(rapply(x$comment, length)))
     if(any(lv) | aa | ac) {
         if(any(lv)) {
             message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
@@ -91,11 +91,11 @@ print.lookin.list <- function(x, ...){
     x$comment <- NULL
     
     lv <- sapply(x, function(z) { if(length(z[["values"]]) | length(z[["comment"]])) { TRUE } else { FALSE } })
-    aa <- any(rapply(a, length))
-    ab <- any(rapply(b, length))
+    aa <- any(unlist(rapply(a, length)))
+    ab <- any(unlist(rapply(b, length)))
     
-    if(any(lv) | aa | ab) {
-        if(any(lv)) {
+    if(any(unlist(lv)) | aa | ab) {
+        if(any(unlist(lv))) {
             message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
             for(i in seq_along(x)) {
                 print(x[[i]])
