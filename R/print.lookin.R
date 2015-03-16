@@ -16,9 +16,7 @@ function(x, ...){
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
             print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
         }
-    } else {
-        message("lookfor did not find '",attributes(x)$what,"' anywhere in '", attributes(x)$object, "'. Bummer!\n", sep = "")
-    }
+    } 
     invisible(x)
 }
 
@@ -43,9 +41,7 @@ print.lookin.data.frame <- function(x, ...){
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
             print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
         }
-    } else {
-        message("lookfor did not find '",attributes(x)$what,"' anywhere in '", attributes(x)$object, "'. Bummer!\n", sep = "")
-    }
+    } 
     invisible(x)
 }
 
@@ -84,9 +80,7 @@ print.lookin.function <- function(x, ...){
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
             print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
         }
-    } else {
-        message("lookfor did not find '",attributes(x)$what,"' anywhere in `", attributes(x)$object, "`. Bummer!\n", sep = "")
-    }
+    } 
     invisible(x)
 }
 
@@ -117,8 +111,6 @@ print.lookin.list <- function(x, ...){
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
             print(data.frame(Match = names(b), Position = b), row.names = FALSE)
         }
-    } else {
-        message("lookfor did not find '",attributes(x)$what,"' anywhere in '", attributes(x)$object, "'. Bummer!\n", sep = "")
-    }
+    } 
     invisible(x)
 }
