@@ -1,5 +1,7 @@
 export(lookfor)
 export(lookin)
+
+# lookin methods
 S3method(lookin, "default")
 S3method(lookin, "character")
 S3method(lookin, "numeric")
@@ -11,4 +13,15 @@ S3method(lookin, "list")
 S3method(lookin, "pairlist")
 S3method(lookin, "environment")
 S3method(lookin, "function")
+
+# print methods
 S3method(print, "lookfor")
+S3method(print, "lookin.character")
+S3method(print, "lookin.numeric")
+S3method(print, "lookin.logical")
+S3method(print, "lookin.factor")
+S3method(print, "lookin.data.frame")
+S3method(print, "lookin.pairlist")
+S3method(print, "lookin.matrix")
+S3method(print, "lookin.environment")
+S3method(print, "lookin.list")

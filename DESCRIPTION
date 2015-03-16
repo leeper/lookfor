@@ -2,7 +2,7 @@ Package: lookfor
 Type: Package
 Title: Find what you're looking for
 Version: 0.1
-Date: 2015-03-10
+Date: 2015-03-16
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"), email = "thosjleeper@gmail.com"))
 Description: This is an R port of Stata's lookfor command, which helps you find stuff you're looking for inside a dataset (e.g., variables, variable values, variable labels, etc.).
