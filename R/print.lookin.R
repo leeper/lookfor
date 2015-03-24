@@ -21,11 +21,16 @@ function(x, ...){
 }
 
 print.lookin.data.frame <- function(x, ...){
-    lv <- sapply(x$variables, function(z) { if(length(z[["values"]]) | length(z[["comment"]])) { TRUE } else { FALSE } })
-    aa <- any(unlist(rapply(x$attributes, length)))
-    ac <- any(unlist(rapply(x$comment, length)))
-    if(any(lv) | aa | ac) {
-        if(any(lv)) {
+    a <- x$attributes
+    b <- x$variables
+    c <- x$comment
+    
+    aa <- any(unlist(rapply(a, length)))
+    ab <- any(unlist(rapply(b, length)))
+    ac <- any(unlist(rapply(c, length)))
+    
+    if(aa | ab | ac) {
+        if(ab) {
             print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             for(i in seq_along(x$variables)) {
                 print(x$variables[[i]])
@@ -94,19 +99,15 @@ print.lookin.function <- function(x, ...){
 
 print.lookin.list <- function(x, ...){    
     a <- x$attributes
-    x$attributes <- NULL
+    b <- x$values
     c <- x$comment
-    x$comment <- NULL
     
-    lv <- sapply(x, function(z) { if(any(rapply(z[["values"]], length)) | any(rapply(z[["comment"]], length))) { TRUE } else { FALSE } })
-    if(length(a))
-        aa <- any(unlist(rapply(a, length)))
-    else
-        aa <- FALSE
+    aa <- any(unlist(rapply(a, length)))
+    ab <- any(unlist(rapply(b, length)))
     ac <- any(unlist(rapply(c, length)))
     
-    if(any(unlist(lv)) | aa | ac) {
-        if(any(unlist(lv))) {
+    if(aa | ab | ac) {
+        if(ab) {
             print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             for(i in seq_along(x)) {
                 print(x[[i]])

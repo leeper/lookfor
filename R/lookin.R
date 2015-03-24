@@ -83,8 +83,9 @@ lookin.data.frame <- function(x, what, object.name, ...) {
 }
 
 lookin.list <- function(x, what, check.attributes = TRUE, object.name, ...) {
-    out1 <- lapply(x, lookin, what = what, ...)
-    out1 <- setNames(out1, names(x))
+    out1 <- list()
+    out1$values <- lapply(x, lookin, what = what, ...)
+    out1$values <- setNames(out1$values, names(x))
     out1$comment <- .in_comment(x, what, ...)
     if(check.attributes) {
         z <- attributes(x)

@@ -64,11 +64,8 @@ lookin(USArrests, "Alaska")
 ```
 
 ```
-## Matches found for 'Alaska' in attributes(USArrests):
-## Matches found for 'Alaska' in 'X[[3L]]':
-```
-
-```
+## [1] Matches found for 'Alaska' in attributes(USArrests):
+## [1] Matches found for 'Alaska' in 'X[[3L]]':
 ##   Match Position
 ##  Alaska        2
 ```
@@ -79,11 +76,8 @@ lookin(USArrests, "Assault")
 ```
 
 ```
-## Matches found for 'Assault' in attributes(USArrests):
-## Matches found for 'Assault' in 'X[[1L]]':
-```
-
-```
+## [1] Matches found for 'Assault' in attributes(USArrests):
+## [1] Matches found for 'Assault' in 'X[[1L]]':
 ##    Match Position
 ##  Assault        2
 ```
@@ -103,19 +97,16 @@ lookin(x, "car")
 ```
 
 ```
-## Matches found for 'car' in 'c("cards", "cars", "mtcars")[[1L]]':
-## Matches found for 'car' in 'c("cards", "cars", "mtcars")[[2L]]':
-## Matches found for 'car' in 'c("cards", "cars", "mtcars")[[3L]]':
-## Matches found for 'car' in comment(x):
-```
-
-```
+## [1] Matches found for 'car' in 'c("cards", "cars", "mtcars")[[1L]]':
 ##  Match Position
 ##  cards        1
+## [1] Matches found for 'car' in 'c("cards", "cars", "mtcars")[[2L]]':
 ##  Match Position
 ##   cars        1
+## [1] Matches found for 'car' in 'c("cards", "cars", "mtcars")[[3L]]':
 ##   Match Position
 ##  mtcars        1
+## [1] Matches found for 'car' in comment(x):
 ## function (..., recursive = FALSE)  .Primitive("c")
 ```
 
@@ -146,10 +137,7 @@ lookfor("Mazda")
 ```
 
 ```
-## lookfor found matches for 'Mazda' in the following locations...
-```
-
-```
+## [1] lookfor found matches for 'Mazda' in the following locations...
 ## Within objects from global environment:
 ```
 
@@ -170,10 +158,7 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
-## lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
-```
-
-```
+## [1] lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
 ## Within objects from global environment:
 ```
 
@@ -187,11 +172,8 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
-## Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
-## Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
-```
-
-```
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
 ##           Match Position
 ##      Datsun 710        3
 ##  Hornet 4 Drive        4
@@ -224,10 +206,7 @@ lookfor("model using", fixed = TRUE)
 ```
 
 ```
-## lookfor found matches for 'model using' in the following locations...
-```
-
-```
+## [1] lookfor found matches for 'model using' in the following locations...
 ## Within objects from global environment:
 ```
 
