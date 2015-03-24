@@ -129,8 +129,15 @@ lookin.matrix <- function(x, what, object.name, ...) {
 
 lookin.environment <- function(x, what, object.name, ...) {
     s <- ls(x)
-    structure(list(comment = .in_comment(x, what, ...), 
-         environment = lapply(s, lookin, what = what)),
+    e <- list()
+    for(i in seq_along(s)) {
+        e[[i]] <- lookin(get(s[i], envir = x), what = what, object.name = s[i])
+    }
+    names(e) <- s
+    
+    structure(list(attributes = .in_attributes(x, what, ...),
+                   comment = .in_comment(x, what, ...), 
+                   environment = e),
          class = "lookin.environment",
          object = if(missing(object.name)) deparse(substitute(x)) else object.name,
          what = what)
