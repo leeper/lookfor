@@ -75,10 +75,6 @@ lookin(USArrests, "Alaska")
 ##  Alaska        2
 ```
 
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
-```
-
 ```r
 # look for variable
 lookin(USArrests, "Assault")
@@ -90,10 +86,10 @@ lookin(USArrests, "Assault")
 ## [1] Matches found for 'Assault' in 'X[[1L]]':
 ##    Match Position
 ##  Assault        2
-```
-
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
+## 
+## $class
+## 
+## $row.names
 ```
 
 
@@ -111,13 +107,15 @@ lookin(x, "car")
 ```
 
 ```
-## Error in rapply(x$attributes, length): 'object' must be a list
-```
-
-```
-## [1] Matches found for 'car' in 'c("cards", "cars", "mtcars")[[1L]]':
+## [1] Matches found for 'car' in attributes(mtcars):
+## $names
+## [1] Matches found for 'car' in 'X[[1L]]':
 ##  Match Position
-##  cards        1
+##   carb       11
+## 
+## $row.names
+## 
+## $class
 ```
 
 
@@ -231,10 +229,35 @@ lookfor("Mazda")
 ##          Match Position
 ##      Mazda RX4        1
 ##  Mazda RX4 Wag        2
-```
-
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
+## 
+## $class
+## 
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [1] Matches found for 'Mazda' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for 'Mazda' in 'X[[2L]]':
+##          Match Position
+##      Mazda RX4        1
+##  Mazda RX4 Wag        2
+## 
+## $class
+## 
+## [1] Matches found for 'Mazda' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for 'Mazda' in 'X[[2L]]':
+##          Match Position
+##      Mazda RX4        1
+##  Mazda RX4 Wag        2
+## 
+## $class
 ```
 
 ### Look using regular expression ###
@@ -345,10 +368,57 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ##        Fiat 128       18
 ##   Porsche 914-2       27
 ##      Volvo 142E       32
-```
-
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
+## 
+## $class
+## 
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
+##           Match Position
+##      Datsun 710        3
+##  Hornet 4 Drive        4
+##      Duster 360        7
+##       Merc 240D        8
+##        Merc 230        9
+##        Merc 280       10
+##       Merc 280C       11
+##      Merc 450SE       12
+##      Merc 450SL       13
+##     Merc 450SLC       14
+##        Fiat 128       18
+##   Porsche 914-2       27
+##      Volvo 142E       32
+## 
+## $class
+## 
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
+##           Match Position
+##      Datsun 710        3
+##  Hornet 4 Drive        4
+##      Duster 360        7
+##       Merc 240D        8
+##        Merc 230        9
+##        Merc 280       10
+##       Merc 280C       11
+##      Merc 450SE       12
+##      Merc 450SL       13
+##     Merc 450SLC       14
+##        Fiat 128       18
+##   Porsche 914-2       27
+##      Volvo 142E       32
+## 
+## $class
 ```
 
 ```r
@@ -376,10 +446,8 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ##        Fiat 128       18
 ##   Porsche 914-2       27
 ##      Volvo 142E       32
-```
-
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
+## 
+## $class
 ```
 
 ### Search `comment()` values ###
@@ -404,9 +472,13 @@ lookfor("model using", fixed = TRUE)
 ## [1] Matches found for 'model using' in 'comment':
 ##                            Match Position
 ##  model using continuous cylinder        1
-```
-
-```
-## Error in rapply(x$attributes, length): 'object' must be a list
+## [1] Matches found for 'model using' in comment(x):
+## function (..., recursive = FALSE)  .Primitive("c")
+## [1] Matches found for 'model using' in attributes(x):
+## [1] Matches found for 'model using' in 'comment':
+##                           Match Position
+##  model using factor of cylinder        1
+## [1] Matches found for 'model using' in comment(x):
+## function (..., recursive = FALSE)  .Primitive("c")
 ```
 
