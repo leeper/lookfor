@@ -12,10 +12,10 @@ print.lookfor <- function(x, ...){
         sum(unlist(any_namespaces)) + 
         sum(unlist(any_fromNamespaces)) +
         sum(unlist(any_search))) == 0) {
-        message("lookfor did not find '",x$what,"' anywhere. Bummer!\n", sep = "")
+        print(paste0("lookfor did not find '",x$what,"' anywhere. Bummer!", sep = ""), quote = FALSE)
         return(invisible(x))
     } else {
-        message("lookfor found matches for '",x$what,"' in the following locations...\n", sep = "")
+        print(paste0("lookfor found matches for '",x$what,"' in the following locations...", sep = ""), quote = FALSE)
     }
     if(any(unlist(any_environment))) {
         cat("Global environment objects:\n")

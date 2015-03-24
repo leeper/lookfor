@@ -5,15 +5,15 @@ print.lookin.factor <-
 function(x, ...){
     if(length(x$values) | length(x$comment) | length(x$attributes)) {
         if(length(x$values)) {
-            message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
         }
         if(length(x$attributes)) {
-            message("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
         }
         if(length(x$comment)) {
-            message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(x$comment)
         }
     } 
@@ -26,19 +26,19 @@ print.lookin.data.frame <- function(x, ...){
     ac <- any(unlist(rapply(x$comment, length)))
     if(any(lv) | aa | ac) {
         if(any(lv)) {
-            message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             for(i in seq_along(x$variables)) {
                 print(x$variables[[i]])
             }
         }
         if(aa) {
-            message("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             for(i in seq_along(x$attributes)) {
                 print(x$attributes[[i]])
             }
         }
         if(ac) {
-            message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(x$comment)
         }
     } 
@@ -65,7 +65,7 @@ print.lookin.environment <- function(x, ...){
         print(x$environment[[i]])
     }
     if(length(x$comment)) {
-        message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
+        print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
         print(c)
     }
     invisible(x)
@@ -77,15 +77,15 @@ print.lookin.function <- function(x, ...){
     c <- x$comment
     if(any(rapply(a, length)) | any(rapply(b, length)) | any(rapply(c, length))) {
         if(any(rapply(a, length))) {
-            message("Matches found for '",attributes(x)$what,"' in arguments for function `", attributes(x)$object, "`:", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in arguments for function `", attributes(x)$object, "`:", sep = ""), quote = FALSE)
             print(a)
         }
         if(any(rapply(b, length))) {
-            message("Matches found for '",attributes(x)$what,"' in in body of function `", attributes(x)$object, "`:", sep = "")
-            print(data.frame(Match = paste0(substring(names(b$values), 1, 40), "..."), Line = b$values), row.names = FALSE)
+            print(paste0("Matches found for '",attributes(x)$what,"' in in body of function `", attributes(x)$object, "`:", sep = ""), quote = FALSE)
+            print(data.frame(Match = paste0(substring(names(b$values), 1, 40), " ..."), Line = b$values), row.names = FALSE)
         }
         if(any(rapply(c, length))) {
-            message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(c)
         }
     } 
@@ -107,19 +107,19 @@ print.lookin.list <- function(x, ...){
     
     if(any(unlist(lv)) | aa | ac) {
         if(any(unlist(lv))) {
-            message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             for(i in seq_along(x)) {
                 print(x[[i]])
             }
         }
         if(aa) {
-            message("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             for(i in seq_along(a)) {
                 print(a[[i]])
             }
         }
         if(ac) {
-            message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
+            print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(c)
         }
     } 
