@@ -71,11 +71,6 @@ lookin(USArrests, "Alaska")
 ```
 ##   Match Position
 ##  Alaska        2
-## [[1]]
-## integer(0)
-## 
-## attr(,"location")
-## [1] "comment"
 ```
 
 ```r
@@ -91,11 +86,6 @@ lookin(USArrests, "Assault")
 ```
 ##    Match Position
 ##  Assault        2
-## [[1]]
-## integer(0)
-## 
-## attr(,"location")
-## [1] "comment"
 ```
 
 
@@ -126,8 +116,7 @@ lookin(x, "car")
 ##   cars        1
 ##   Match Position
 ##  mtcars        1
-## [1] integer.0.
-## <0 rows> (or 0-length row.names)
+## function (..., recursive = FALSE)  .Primitive("c")
 ```
 
 
@@ -165,11 +154,7 @@ lookfor("Mazda")
 ```
 
 ```
-## Matches found for 'Mazda' in 'x':
-```
-
-```
-## Error in rapply(a, length): 'object' must be a list
+## Error in rapply(z[["values"]], length): 'object' must be a list
 ```
 
 ### Look using regular expression ###
@@ -193,11 +178,7 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
-## Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
-```
-
-```
-## Error in rapply(a, length): 'object' must be a list
+## Error in rapply(z[["values"]], length): 'object' must be a list
 ```
 
 ```r
@@ -225,11 +206,6 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ##        Fiat 128       18
 ##   Porsche 914-2       27
 ##      Volvo 142E       32
-## [[1]]
-## integer(0)
-## 
-## attr(,"location")
-## [1] "comment"
 ```
 
 ### Search `comment()` values ###
@@ -256,10 +232,6 @@ lookfor("model using", fixed = TRUE)
 ```
 
 ```
-## Matches found for 'model using' in 'x':
-```
-
-```
-## Error in rapply(a, length): 'object' must be a list
+## Error in rapply(z[["values"]], length): 'object' must be a list
 ```
 
