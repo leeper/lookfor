@@ -99,7 +99,10 @@ print.lookin.list <- function(x, ...){
     x$comment <- NULL
     
     lv <- sapply(x, function(z) { if(length(z[["values"]]) | length(z[["comment"]])) { TRUE } else { FALSE } })
-    aa <- any(unlist(rapply(a, length)))
+    if(length(a))
+        aa <- any(unlist(rapply(a, length)))
+    else
+        aa <- FALSE
     ab <- any(unlist(rapply(b, length)))
     
     if(any(unlist(lv)) | aa | ab) {

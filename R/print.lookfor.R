@@ -29,7 +29,6 @@ print.lookfor <- function(x, ...){
         for(i in seq_along(x$objects)) {
             print(x$objects[[i]])
         }
-        cat("coming soon...\n\n")
     }
     if(any(unlist(any_search))) {
         cat("Objects on search() path:\n")
