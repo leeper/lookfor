@@ -129,9 +129,12 @@ lookin.environment <- function(x, what, ...) {
 }
 
 lookin.function <- function(x, what, ...) {
-    f <- lookin(formals(x), what, ...)
+    f <- sapply(formals(x), function(z) as.character(as.expression(z)))
+    f <- lookin(f, what, ...)
     b <- lookin(as.character(body(x)), what, ...)
-    structure(list(arguments = f, body = b), 
+    structure(list(arguments = f, 
+                   body = b, 
+                   comment = .in_comment(x, what, ...)), 
               class = "lookin.function",
               object = deparse(substitute(x)),
               what = what)

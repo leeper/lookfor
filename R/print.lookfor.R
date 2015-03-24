@@ -53,14 +53,13 @@ print.lookfor <- function(x, ...){
         for(i in seq_along(x$fromNamespaces)) {
             lv <- length(x$fromNamespaces[[i]]$values)
             if(lv) {
-                tmplen <- length(x$fromNamespaces[[i]]$values)
-                index <- if(tmplen > 1) j:(j+tmplen-1) else j
+                index <- if(lv > 1) j:(j+lv-1) else j
                 tmp[index,"Namespace"] <- names(x$fromNamespaces)[i]
                 tmp[index,"Object"] <- names(x$fromNamespaces[[i]]$values)
                 tmp[index,"Position in Namespace"] <- x$fromNamespaces[[i]]$values
                 #tmp[index,"Value"] <- as.character(x$fromNamespaces[[i]]$values)
                 tmp[index,"Comment"] <- ""
-                j <- j + max(index)
+                j <- j + lv
             }
         }
         if(nrow(tmp) > 0) {
