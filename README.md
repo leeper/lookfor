@@ -65,6 +65,11 @@ lookin(USArrests, "Alaska")
 
 ```
 ## [1] Matches found for 'Alaska' in attributes(USArrests):
+## $names
+## 
+## $class
+## 
+## $row.names
 ## [1] Matches found for 'Alaska' in 'X[[3L]]':
 ##   Match Position
 ##  Alaska        2
@@ -77,9 +82,14 @@ lookin(USArrests, "Assault")
 
 ```
 ## [1] Matches found for 'Assault' in attributes(USArrests):
+## $names
 ## [1] Matches found for 'Assault' in 'X[[1L]]':
 ##    Match Position
 ##  Assault        2
+## 
+## $class
+## 
+## $row.names
 ```
 
 
@@ -139,10 +149,109 @@ lookfor("Mazda")
 ```
 ## [1] lookfor found matches for 'Mazda' in the following locations...
 ## Within objects from global environment:
-```
-
-```
-## Error in rapply(z[["values"]], length): 'object' must be a list
+## [1] Matches found for 'Mazda' in 'x':
+## $coefficients
+## 
+## $residuals
+## 
+## $effects
+## 
+## $rank
+## 
+## $fitted.values
+## 
+## $assign
+## 
+## $qr
+## [1] Matches found for 'Mazda' in 'x':
+## $qr
+## 
+## $qraux
+## 
+## $pivot
+## 
+## $tol
+## 
+## $rank
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## 
+## $df.residual
+## 
+## $xlevels
+## 
+## $call
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[10L]]"
+## attr(,"what")
+## [1] "Mazda"
+## 
+## $terms
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[11L]]"
+## attr(,"what")
+## [1] "Mazda"
+## 
+## $model
+## [1] Matches found for 'Mazda' in attributes(X[[12L]]):
+## $names
+## 
+## $terms
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[2L]]"
+## attr(,"what")
+## [1] "Mazda"
+## 
+## $row.names
+## [1] Matches found for 'Mazda' in 'X[[3L]]':
+##          Match Position
+##      Mazda RX4        1
+##  Mazda RX4 Wag        2
+## 
+## $class
+## 
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [1] Matches found for 'Mazda' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for 'Mazda' in 'X[[2L]]':
+##          Match Position
+##      Mazda RX4        1
+##  Mazda RX4 Wag        2
+## 
+## $class
+## 
+## [1] Matches found for 'Mazda' in comment(x):
+## function (..., recursive = FALSE)  .Primitive("c")
 ```
 
 ### Look using regular expression ###
@@ -160,19 +269,111 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 ## [1] lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
 ## Within objects from global environment:
-```
-
-```
-## Error in rapply(z[["values"]], length): 'object' must be a list
-```
-
-```r
-# Look for car names containing letters and numbers (in mtcars)
-lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
-```
-
-```
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
+## $coefficients
+## 
+## $residuals
+## 
+## $effects
+## 
+## $rank
+## 
+## $fitted.values
+## 
+## $assign
+## 
+## $qr
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
+## $qr
+## 
+## $qraux
+## 
+## $pivot
+## 
+## $tol
+## 
+## $rank
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## 
+## $df.residual
+## 
+## $xlevels
+## 
+## $call
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[10L]]"
+## attr(,"what")
+## [1] "[[:alpha:]]+ [[:digit:]]"
+## 
+## $terms
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[11L]]"
+## attr(,"what")
+## [1] "[[:alpha:]]+ [[:digit:]]"
+## 
+## $model
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(X[[12L]]):
+## $names
+## 
+## $terms
+## $values
+## integer(0)
+## 
+## attr(,"location")
+## [1] "values"
+## attr(,"class")
+## [1] "lookin"
+## attr(,"object")
+## [1] "X[[2L]]"
+## attr(,"what")
+## [1] "[[:alpha:]]+ [[:digit:]]"
+## 
+## $row.names
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[3L]]':
+##           Match Position
+##      Datsun 710        3
+##  Hornet 4 Drive        4
+##      Duster 360        7
+##       Merc 240D        8
+##        Merc 230        9
+##        Merc 280       10
+##       Merc 280C       11
+##      Merc 450SE       12
+##      Merc 450SL       13
+##     Merc 450SLC       14
+##        Fiat 128       18
+##   Porsche 914-2       27
+##      Volvo 142E       32
+## 
+## $class
+## 
+## 
+## [[1]]
+## 
+## [[2]]
+## 
 ## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
+## $names
+## 
+## $row.names
 ## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
 ##           Match Position
 ##      Datsun 710        3
@@ -188,6 +389,40 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ##        Fiat 128       18
 ##   Porsche 914-2       27
 ##      Volvo 142E       32
+## 
+## $class
+## 
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in comment(x):
+## function (..., recursive = FALSE)  .Primitive("c")
+```
+
+```r
+# Look for car names containing letters and numbers (in mtcars)
+lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
+```
+
+```
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(mtcars):
+## $names
+## 
+## $row.names
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
+##           Match Position
+##      Datsun 710        3
+##  Hornet 4 Drive        4
+##      Duster 360        7
+##       Merc 240D        8
+##        Merc 230        9
+##        Merc 280       10
+##       Merc 280C       11
+##      Merc 450SE       12
+##      Merc 450SL       13
+##     Merc 450SLC       14
+##        Fiat 128       18
+##   Porsche 914-2       27
+##      Volvo 142E       32
+## 
+## $class
 ```
 
 ### Search `comment()` values ###
@@ -208,9 +443,17 @@ lookfor("model using", fixed = TRUE)
 ```
 ## [1] lookfor found matches for 'model using' in the following locations...
 ## Within objects from global environment:
-```
-
-```
-## Error in rapply(z[["values"]], length): 'object' must be a list
+## [1] Matches found for 'model using' in attributes(x):
+## [1] Matches found for 'model using' in 'comment':
+##                            Match Position
+##  model using continuous cylinder        1
+## [1] Matches found for 'model using' in comment(x):
+## [1] Matches found for 'model using' in attributes(x):
+## [1] Matches found for 'model using' in 'comment':
+##                           Match Position
+##  model using factor of cylinder        1
+## [1] Matches found for 'model using' in comment(x):
+## [1] Matches found for 'model using' in comment(x):
+## function (..., recursive = FALSE)  .Primitive("c")
 ```
 

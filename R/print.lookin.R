@@ -8,7 +8,7 @@ function(x, ...){
             print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
         }
-        if(length(x$attributes)) {
+        if(any(rapply(x$attributes, length))) {
             print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
             print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
         }
