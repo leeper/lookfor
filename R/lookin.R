@@ -8,7 +8,7 @@
 
 .in_comment <- function(x, what, ignore.case = FALSE, ...) {
     w <- which(grepl(what, comment(x), ...))
-    structure(list(setNames(w, comment(x)[w])), location = "comment")
+    structure(list(setNames(w, comment(x)[w])), class = "lookin.comment", location = "comment")
 }
 
 .in_attributes <- function(x, what, ignore.case = FALSE, ...) {
@@ -108,7 +108,7 @@ lookin.pairlist <- function(x, what, object.name, ...) {
     for(i in seq_along(x))
         out1[[i]] <- .in_values(as.character(x[[i]]), what, ...)
     out2 <- .in_values(names(x), what, ...)
-    structure(c(names = out2, values = out1), 
+    structure(c(names = out2, values = list(out1)), 
               class = "lookin.pairlist",
               object = if(missing(object.name)) deparse(substitute(x)) else object.name,
               what = what)
@@ -145,4 +145,12 @@ lookin.function <- function(x, what, object.name, ...) {
               class = "lookin.function",
               object = if(missing(object.name)) deparse(substitute(x)) else object.name,
               what = what)
+}
+
+lookin.lookin <- function(x, what, ...) {
+    structure(list(integer()), class = "lookin.lookin")
+}
+
+lookin.lookfor <- function(x, what, ...) {
+    structure(list(integer()), class = "lookin.lookfor")
 }

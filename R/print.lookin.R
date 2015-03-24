@@ -14,7 +14,7 @@ function(x, ...){
         }
         if(length(x$comment)) {
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
-            print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
+            print(x$comment)
         }
     } 
     invisible(x)
@@ -39,7 +39,7 @@ print.lookin.data.frame <- function(x, ...){
         }
         if(ac) {
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
-            print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
+            print(x$comment)
         }
     } 
     invisible(x)
@@ -66,7 +66,7 @@ print.lookin.environment <- function(x, ...){
     }
     if(length(x$comment)) {
         message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
-        print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
+        print(c)
     }
     invisible(x)
 }
@@ -82,11 +82,11 @@ print.lookin.function <- function(x, ...){
         }
         if(any(rapply(b, length))) {
             message("Matches found for '",attributes(x)$what,"' in in body of function `", attributes(x)$object, "`:", sep = "")
-            print(data.frame(Match = paste0(substring(names(b$values), 1, 30), "..."), Line = b$values), row.names = FALSE)
+            print(data.frame(Match = paste0(substring(names(b$values), 1, 40), "..."), Line = b$values), row.names = FALSE)
         }
         if(any(rapply(c, length))) {
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
-            print(data.frame(Match = names(x$comment), Position = x$comment), row.names = FALSE)
+            print(c)
         }
     } 
     invisible(x)
@@ -95,17 +95,17 @@ print.lookin.function <- function(x, ...){
 print.lookin.list <- function(x, ...){    
     a <- x$attributes
     x$attributes <- NULL
-    b <- x$comment
+    c <- x$comment
     x$comment <- NULL
     
-    lv <- sapply(x, function(z) { if(length(z[["values"]]) | length(z[["comment"]])) { TRUE } else { FALSE } })
+    lv <- sapply(x, function(z) { if(any(rapply(z[["values"]], length)) | any(rapply(z[["comment"]], length))) { TRUE } else { FALSE } })
     if(length(a))
         aa <- any(unlist(rapply(a, length)))
     else
         aa <- FALSE
-    ab <- any(unlist(rapply(b, length)))
+    ac <- any(unlist(rapply(c, length)))
     
-    if(any(unlist(lv)) | aa | ab) {
+    if(any(unlist(lv)) | aa | ac) {
         if(any(unlist(lv))) {
             message("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = "")
             for(i in seq_along(x)) {
@@ -118,10 +118,23 @@ print.lookin.list <- function(x, ...){
                 print(a[[i]])
             }
         }
-        if(ab) {
+        if(ac) {
             message("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = "")
-            print(data.frame(Match = names(b), Position = b), row.names = FALSE)
+            print(c)
         }
     } 
+    invisible(x)
+}
+
+print.lookin.comment <- function(x, ...) {
+    if(length(x$values))
+        print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
+}
+
+print.lookin.lookin <- function(x, ...) {
+    invisible(x)
+}
+
+print.lookin.lookfor <- function(x, ...) {
     invisible(x)
 }

@@ -13,6 +13,12 @@ S3method(lookin, "list")
 S3method(lookin, "pairlist")
 S3method(lookin, "environment")
 S3method(lookin, "function")
+S3method(lookin, "lookin")
+S3method(lookin, "lookfor")
+
+# don't look in lookin or lookfor objects (avoid crazy recursion)
+S3method(lookin, "lookin")
+S3method(lookin, "lookfor")
 
 # print methods
 S3method(print, "lookfor")
