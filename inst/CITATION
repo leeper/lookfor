@@ -4,9 +4,9 @@ citHeader("To cite package 'lookfor' in publications use:")
  vers <- paste("R package version", meta$Version)
  
  citEntry(entry="Manual",
-		  title = "lookfor: Find what you're looking for.",
+		  title = "lookfor: Find What You're Looking For.",
 		  author = personList(as.person("Thomas J. Leeper")),
 		  year = year,
 		  note = vers,
 		  textVersion =
-		  paste("Thomas J. Leeper (",year,"). lookfor: Find what you're looking for. ", vers, ".", sep=""))
+		  paste("Thomas J. Leeper (",year,"). lookfor: Find What You're Looking For. ", vers, ".", sep=""))

@@ -22,12 +22,14 @@ function(x, ...){
     
     if(aa | ab | ac) {
         if(ab) {
-            print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
-            print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
+            #print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
+            print(data.frame(Object = attributes(x)$object, Position = x$values, Match = names(x$values)), row.names = FALSE)
         }
         if(aa) {
-            print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
-            print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
+            #print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
+            print(data.frame(Object = paste0("attributes(", attributes(x)$object, ")"), 
+                             Position = x$values, 
+                             Match = names(x$values)), row.names = FALSE)
         }
         if(ac) {
             print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
@@ -77,11 +79,11 @@ print.lookin.data.frame <- function(x, ...){
 }
 
 print.lookin.pairlist <- function(x, ...){
-    if(length(a$names)){
-        print(data.frame(Match = names(a$names), Position = a$names), row.names = FALSE)
+    if(length(x$names)){
+        print(data.frame(Object = attributes(x)$object, Position = x$names, Match = names(x$names)), row.names = FALSE)
     }
     if(any(sapply(v, length))){
-        print(data.frame(Match = names(a$names), Position = a$names), row.names = FALSE)
+        print(data.frame(Object = attributes(x)$object, Position = x$names, Match = names(x$names)), row.names = FALSE)
     }
     invisible(x)
 }
@@ -153,8 +155,10 @@ print.lookin.function <- function(x, ...){
             print(a)
         }
         if(ab) {
-            print(paste0("Matches found for '",attributes(x)$what,"' in in body of function `", attributes(x)$object, "`:", sep = ""), quote = FALSE)
-            print(data.frame(Match = paste0(substring(names(b$values), 1, 40), " ..."), Line = b$values), row.names = FALSE)
+            #print(paste0("Matches found for '",attributes(x)$what,"' in body of function `", attributes(x)$object, "`:", sep = ""), quote = FALSE)
+            print(data.frame(Object = paste0("`", attributes(x)$object, "` function body"),
+                             Line = b$values, 
+                             Match = paste0(substring(names(b$values), 1, 40), " ...")), row.names = FALSE)
         }
         if(ac) {
             print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
@@ -165,7 +169,7 @@ print.lookin.function <- function(x, ...){
 }
 
 print.lookin.list <- function(x, ...){    
-    a <- x$attributes
+    a <- x$attributes$values
     b <- x$values
     com <- x$comment
     
@@ -184,16 +188,14 @@ print.lookin.list <- function(x, ...){
     
     if(aa | ab | ac) {
         if(ab) {
-            print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
+            #print(paste0("Matches found for '",attributes(x)$what,"' in '", attributes(x)$object, "':", sep = ""), quote = FALSE)
             for(i in seq_along(x)) {
                 print(x[[i]])
             }
         }
         if(aa) {
             print(paste0("Matches found for '",attributes(x)$what,"' in attributes(", attributes(x)$object, "):", sep = ""), quote = FALSE)
-            for(i in seq_along(a)) {
-                print(a[[i]])
-            }
+            print(a)
         }
         if(ac) {
             print(paste0("Matches found for '",attributes(x)$what,"' in comment(", attributes(x)$object, "):", sep = ""), quote = FALSE)
@@ -205,7 +207,7 @@ print.lookin.list <- function(x, ...){
 
 print.lookin.comment <- function(x, ...) {
     if(length(x$values))
-        print(data.frame(Match = names(x$values), Position = x$values), row.names = FALSE)
+        print(data.frame(Position = x$values, Match = names(x$values)), row.names = FALSE)
 }
 
 print.lookin.lookin <- function(x, ...) {

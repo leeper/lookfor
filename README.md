@@ -57,6 +57,18 @@ A basic use case is to search for an observation or a variable within a dataset.
 
 ```r
 library("lookfor")
+```
+
+```
+## 
+## Attaching package: 'lookfor'
+## 
+## The following objects are masked _by_ '.GlobalEnv':
+## 
+##     lookfor, lookin
+```
+
+```r
 data(USArrests)
 
 # look for observation
@@ -70,9 +82,8 @@ lookin(USArrests, "Alaska")
 ## $class
 ## 
 ## $row.names
-## [1] Matches found for 'Alaska' in 'X[[3L]]':
-##   Match Position
-##  Alaska        2
+##   Object Position  Match
+##  X[[3L]]        2 Alaska
 ```
 
 ```r
@@ -83,9 +94,8 @@ lookin(USArrests, "Assault")
 ```
 ## [1] Matches found for 'Assault' in attributes(USArrests):
 ## $names
-## [1] Matches found for 'Assault' in 'X[[1L]]':
-##    Match Position
-##  Assault        2
+##   Object Position   Match
+##  X[[1L]]        2 Assault
 ## 
 ## $class
 ## 
@@ -109,9 +119,8 @@ lookin(x, "car")
 ```
 ## [1] Matches found for 'car' in attributes(mtcars):
 ## $names
-## [1] Matches found for 'car' in 'X[[1L]]':
-##  Match Position
-##   carb       11
+##   Object Position Match
+##  X[[1L]]       11  carb
 ## 
 ## $row.names
 ## 
@@ -145,9 +154,12 @@ lookfor("Mazda")
 ```
 
 ```
-## [1] lookfor found matches for 'Mazda' in the following locations...
+## lookfor found matches for 'Mazda' in the following locations...
+## 
 ## Within objects from global environment:
-## [1] Matches found for 'Mazda' in 'x':
+```
+
+```
 ## $coefficients
 ## 
 ## $residuals
@@ -161,7 +173,6 @@ lookfor("Mazda")
 ## $assign
 ## 
 ## $qr
-## [1] Matches found for 'Mazda' in 'x':
 ## $qr
 ## 
 ## $qraux
@@ -225,10 +236,9 @@ lookfor("Mazda")
 ## [1] "Mazda"
 ## 
 ## $row.names
-## [1] Matches found for 'Mazda' in 'X[[3L]]':
-##          Match Position
-##      Mazda RX4        1
-##  Mazda RX4 Wag        2
+##   Object Position         Match
+##  X[[3L]]        1     Mazda RX4
+##  X[[3L]]        2 Mazda RX4 Wag
 ## 
 ## $class
 ## 
@@ -241,10 +251,9 @@ lookfor("Mazda")
 ## $names
 ## 
 ## $row.names
-## [1] Matches found for 'Mazda' in 'X[[2L]]':
-##          Match Position
-##      Mazda RX4        1
-##  Mazda RX4 Wag        2
+##   Object Position         Match
+##  X[[2L]]        1     Mazda RX4
+##  X[[2L]]        2 Mazda RX4 Wag
 ## 
 ## $class
 ## 
@@ -252,12 +261,15 @@ lookfor("Mazda")
 ## $names
 ## 
 ## $row.names
-## [1] Matches found for 'Mazda' in 'X[[2L]]':
-##          Match Position
-##      Mazda RX4        1
-##  Mazda RX4 Wag        2
+##   Object Position         Match
+##  X[[2L]]        1     Mazda RX4
+##  X[[2L]]        2 Mazda RX4 Wag
 ## 
 ## $class
+```
+
+```
+## 
 ```
 
 ### Look using regular expression ###
@@ -273,9 +285,12 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ```
 
 ```
-## [1] lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
+## lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
+## 
 ## Within objects from global environment:
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
+```
+
+```
 ## $coefficients
 ## 
 ## $residuals
@@ -289,7 +304,6 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## $assign
 ## 
 ## $qr
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'x':
 ## $qr
 ## 
 ## $qraux
@@ -353,21 +367,20 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## [1] "[[:alpha:]]+ [[:digit:]]"
 ## 
 ## $row.names
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[3L]]':
-##           Match Position
-##      Datsun 710        3
-##  Hornet 4 Drive        4
-##      Duster 360        7
-##       Merc 240D        8
-##        Merc 230        9
-##        Merc 280       10
-##       Merc 280C       11
-##      Merc 450SE       12
-##      Merc 450SL       13
-##     Merc 450SLC       14
-##        Fiat 128       18
-##   Porsche 914-2       27
-##      Volvo 142E       32
+##   Object Position          Match
+##  X[[3L]]        3     Datsun 710
+##  X[[3L]]        4 Hornet 4 Drive
+##  X[[3L]]        7     Duster 360
+##  X[[3L]]        8      Merc 240D
+##  X[[3L]]        9       Merc 230
+##  X[[3L]]       10       Merc 280
+##  X[[3L]]       11      Merc 280C
+##  X[[3L]]       12     Merc 450SE
+##  X[[3L]]       13     Merc 450SL
+##  X[[3L]]       14    Merc 450SLC
+##  X[[3L]]       18       Fiat 128
+##  X[[3L]]       27  Porsche 914-2
+##  X[[3L]]       32     Volvo 142E
 ## 
 ## $class
 ## 
@@ -380,21 +393,20 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
-##           Match Position
-##      Datsun 710        3
-##  Hornet 4 Drive        4
-##      Duster 360        7
-##       Merc 240D        8
-##        Merc 230        9
-##        Merc 280       10
-##       Merc 280C       11
-##      Merc 450SE       12
-##      Merc 450SL       13
-##     Merc 450SLC       14
-##        Fiat 128       18
-##   Porsche 914-2       27
-##      Volvo 142E       32
+##   Object Position          Match
+##  X[[2L]]        3     Datsun 710
+##  X[[2L]]        4 Hornet 4 Drive
+##  X[[2L]]        7     Duster 360
+##  X[[2L]]        8      Merc 240D
+##  X[[2L]]        9       Merc 230
+##  X[[2L]]       10       Merc 280
+##  X[[2L]]       11      Merc 280C
+##  X[[2L]]       12     Merc 450SE
+##  X[[2L]]       13     Merc 450SL
+##  X[[2L]]       14    Merc 450SLC
+##  X[[2L]]       18       Fiat 128
+##  X[[2L]]       27  Porsche 914-2
+##  X[[2L]]       32     Volvo 142E
 ## 
 ## $class
 ## 
@@ -402,23 +414,72 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
-##           Match Position
-##      Datsun 710        3
-##  Hornet 4 Drive        4
-##      Duster 360        7
-##       Merc 240D        8
-##        Merc 230        9
-##        Merc 280       10
-##       Merc 280C       11
-##      Merc 450SE       12
-##      Merc 450SL       13
-##     Merc 450SLC       14
-##        Fiat 128       18
-##   Porsche 914-2       27
-##      Volvo 142E       32
+##   Object Position          Match
+##  X[[2L]]        3     Datsun 710
+##  X[[2L]]        4 Hornet 4 Drive
+##  X[[2L]]        7     Duster 360
+##  X[[2L]]        8      Merc 240D
+##  X[[2L]]        9       Merc 230
+##  X[[2L]]       10       Merc 280
+##  X[[2L]]       11      Merc 280C
+##  X[[2L]]       12     Merc 450SE
+##  X[[2L]]       13     Merc 450SL
+##  X[[2L]]       14    Merc 450SLC
+##  X[[2L]]       18       Fiat 128
+##  X[[2L]]       27  Porsche 914-2
+##  X[[2L]]       32     Volvo 142E
 ## 
 ## $class
+## 
+## $attributes
+## $values
+## $names
+## 
+## $row.names
+## $values
+## 
+## $comment
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [[3]]
+## 
+## [[4]]
+## 
+## 
+## $class
+## 
+## [[1]]
+## 
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [[3]]
+## 
+## [[4]]
+## 
+## [[5]]
+## 
+## 
+## $comment
+## 
+## $variables
+## 
+## [[1]]
+## 
+## [[2]]
+## 
+## [[3]]
+## 
+## [[4]]
+```
+
+```
+## 
 ```
 
 ```r
@@ -431,21 +492,20 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in 'X[[2L]]':
-##           Match Position
-##      Datsun 710        3
-##  Hornet 4 Drive        4
-##      Duster 360        7
-##       Merc 240D        8
-##        Merc 230        9
-##        Merc 280       10
-##       Merc 280C       11
-##      Merc 450SE       12
-##      Merc 450SL       13
-##     Merc 450SLC       14
-##        Fiat 128       18
-##   Porsche 914-2       27
-##      Volvo 142E       32
+##   Object Position          Match
+##  X[[2L]]        3     Datsun 710
+##  X[[2L]]        4 Hornet 4 Drive
+##  X[[2L]]        7     Duster 360
+##  X[[2L]]        8      Merc 240D
+##  X[[2L]]        9       Merc 230
+##  X[[2L]]       10       Merc 280
+##  X[[2L]]       11      Merc 280C
+##  X[[2L]]       12     Merc 450SE
+##  X[[2L]]       13     Merc 450SL
+##  X[[2L]]       14    Merc 450SLC
+##  X[[2L]]       18       Fiat 128
+##  X[[2L]]       27  Porsche 914-2
+##  X[[2L]]       32     Volvo 142E
 ## 
 ## $class
 ```
@@ -466,19 +526,19 @@ lookfor("model using", fixed = TRUE)
 ```
 
 ```
-## [1] lookfor found matches for 'model using' in the following locations...
+## lookfor found matches for 'model using' in the following locations...
+## 
 ## Within objects from global environment:
-## [1] Matches found for 'model using' in attributes(x):
-## [1] Matches found for 'model using' in 'comment':
-##                            Match Position
-##  model using continuous cylinder        1
+```
+
+```
 ## [1] Matches found for 'model using' in comment(x):
 ## function (..., recursive = FALSE)  .Primitive("c")
-## [1] Matches found for 'model using' in attributes(x):
-## [1] Matches found for 'model using' in 'comment':
-##                           Match Position
-##  model using factor of cylinder        1
 ## [1] Matches found for 'model using' in comment(x):
 ## function (..., recursive = FALSE)  .Primitive("c")
+```
+
+```
+## 
 ```
 

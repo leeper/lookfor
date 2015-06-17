@@ -14,7 +14,7 @@
 .in_attributes <- function(x, what, ignore.case = FALSE, ...) {
     a <- attributes(x)
     if(length(a))
-        structure(lookin(a, what, check.attributes = FALSE, ...), location = "attributes")
+        structure(lookin(a, what, check.attributes = FALSE, check.comment = FALSE, ...), location = "attributes")
     else
         structure(list(), location = "attributes")
 }
@@ -74,7 +74,8 @@ lookin.factor <- function(x, what, object.name, ...) {
 lookin.data.frame <- function(x, what, object.name, ...) {
     if(class(x) != 'data.frame')
         stop("Object must be a data.frame")
-    structure(list(attributes = .in_attributes(x, what, ...),
+    structure(list(attributes = .in_attributes(x, what, 
+                                   if(missing(object.name)) deparse(substitute(x)) else object.name, ...),
                    comment = .in_comment(x, what, ...),
                    variables = lapply(x, lookin, what = what, ...)), 
               class = "lookin.data.frame",
@@ -82,11 +83,12 @@ lookin.data.frame <- function(x, what, object.name, ...) {
               what = what)
 }
 
-lookin.list <- function(x, what, check.attributes = TRUE, object.name, ...) {
+lookin.list <- function(x, what, check.attributes = TRUE, check.comment = TRUE, object.name, ...) {
     out1 <- list()
     out1$values <- lapply(x, lookin, what = what, ...)
     out1$values <- setNames(out1$values, names(x))
-    out1$comment <- .in_comment(x, what, ...)
+    if(check.comment)
+        out1$comment <- .in_comment(x, what, ...)
     if(check.attributes) {
         z <- attributes(x)
         #z$names <- NULL
