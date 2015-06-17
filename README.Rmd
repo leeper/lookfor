@@ -94,8 +94,7 @@ lookin(m, "mpg")
 Lastly, the `lookfor` command can be used to look anywhere (within `.GlobalEnv`, the R search path, objects within objects on the search path, loaded namespaces, etc.).
 
 ```{r}
-data(mtcars)
-lookfor("Mazda")
+lookfor("package")
 ```
 
 ### Look using regular expression ###
