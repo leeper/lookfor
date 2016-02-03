@@ -4,8 +4,11 @@
 
 ## Package Installation ##
 
-[![Build Status](https://travis-ci.org/leeper/lookfor.png?branch=master)](https://travis-ci.org/leeper/lookfor)
 [![CRAN](http://www.r-pkg.org/badges/version/lookfor)](http://cran.r-project.org/web/packages/lookfor/)
+![Downloads](http://cranlogs.r-pkg.org/badges/lookfor)
+[![Travis-CI Build Status](https://travis-ci.org/leeper/lookfor.png?branch=master)](https://travis-ci.org/leeper/lookfor)
+[![Codecov](http://www.r-pkg.org/badges/version/lookfor)](http://cran.r-project.org/web/packages/lookfor/)
+[![codecov.io](http://codecov.io/github/leeper/lookfor/coverage.svg?branch=master)](http://codecov.io/github/leeper/lookfor?branch=master)
 [![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
 
 The latest development version on GitHub can be installed using **devtools**:
@@ -47,6 +50,10 @@ This is helpful and something easily replicated by searching within the `names` 
 The major weakness of Stata's `lookfor` command is that it relies only on a plain text, exact matching search algorithm. This makes it difficult to search for variables or labels that match a pattern (e.g., a pattern that might easily be described by a regular expression). As a result, the R port uses `grepl` to find matches, meaning that regular expressions are used by default when trying to find something and arguments can be passed via `...` to control the behavior of `grepl` (e.g., setting `fixed=TRUE` will match an exact string, and `perl=TRUE` will use Perl-style regular expressions).
 
 ### Look in a data.frame ###
+
+```{r, results="hide"}
+options(width = 100)
+```
 
 A basic use case is to search for an observation or a variable within a dataset.
 

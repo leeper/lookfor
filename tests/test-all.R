@@ -1,2 +1,2 @@
 library("testthat")
-#test_check("lookfor")
+test_check("lookfor")

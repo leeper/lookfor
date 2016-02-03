@@ -18,4 +18,34 @@ lookin(x, what, \dots)
 \author{Thomas J. Leeper}
 %\references{}
 %\seealso{}
-%\examples{}
+\examples{
+require("datasets")
+
+# look in a data.frame
+data(USArrests)
+## look for observation
+lookin(USArrests, "Alaska")
+## look for variable
+lookin(USArrests, "Assault")
+
+# look in an environment
+x <- new.env()
+x$mtcars <- mtcars
+x$cars <- letters[1:10]
+x$cards <- 1:5
+lookin(x, "car")
+
+# look in a list
+data(mtcars)
+x <- structure(mtcars, class = "list")
+lookin(x, "mpg")
+
+# look everywhere
+lookfor("package")
+
+# use regular expressions
+## Look for car names containing letters and numbers (anywhere)
+lookfor("[[:alpha:]]+ [[:digit:]]")
+## Look for car names containing letters and numbers (in mtcars)
+lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
+}

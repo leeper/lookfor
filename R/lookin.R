@@ -1,9 +1,10 @@
 .in_values <- function(x, what, ignore.case = FALSE, ...) {
     w <- which(grepl(what, x, ...))
-    if(length(w))
+    if (length(w)) {
         structure(list(setNames(w, x[w])), location = "values")
-    else
+    } else {
         structure(list(integer()), location = "values")
+    }
 }
 
 .in_comment <- function(x, what, ignore.case = FALSE, ...) {
@@ -13,22 +14,24 @@
 
 .in_attributes <- function(x, what, ignore.case = FALSE, ...) {
     a <- attributes(x)
-    if(length(a))
+    if (length(a)) {
         structure(lookin(a, what, check.attributes = FALSE, check.comment = FALSE, ...), location = "attributes")
-    else
+    } else {
         structure(list(), location = "attributes")
+    }
 }
 
 lookin <- function(x, what, ...) UseMethod("lookin")
 
 lookin.default <- function(x, what, object.name, ...) {
-    if(is.list(x))
+    if (is.list(x)) {
         lookin.list(x, what, ...)
-    else 
+    } else {
         structure(setNames(.in_values(x, what, ...), "values"), 
                   class = "lookin",
-                  object = if(missing(object.name)) deparse(substitute(x)) else object.name,
+                  object = if(missing(object.name)) { deparse(substitute(x)) } else { object.name },
                   what = what)
+    }
 }
 
 lookin.character <- function(x, what, object.name, ...) {

@@ -82,7 +82,7 @@ print.lookin.pairlist <- function(x, ...){
     if(length(x$names)){
         print(data.frame(Object = attributes(x)$object, Position = x$names, Match = names(x$names)), row.names = FALSE)
     }
-    if(any(sapply(v, length))){
+    if(any(sapply(x, length))){
         print(data.frame(Object = attributes(x)$object, Position = x$names, Match = names(x$names)), row.names = FALSE)
     }
     invisible(x)

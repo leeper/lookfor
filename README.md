@@ -4,11 +4,12 @@
 
 ## Package Installation ##
 
-The package might be available on [CRAN](http://cran.r-project.org/web/packages/lookfor/) and can be installed directly in R using:
-
-```R
-install.packages("lookfor")
-```
+[![CRAN](http://www.r-pkg.org/badges/version/lookfor)](http://cran.r-project.org/web/packages/lookfor/)
+![Downloads](http://cranlogs.r-pkg.org/badges/lookfor)
+[![Travis-CI Build Status](https://travis-ci.org/leeper/lookfor.png?branch=master)](https://travis-ci.org/leeper/lookfor)
+[![Codecov](http://www.r-pkg.org/badges/version/lookfor)](http://cran.r-project.org/web/packages/lookfor/)
+[![codecov.io](http://codecov.io/github/leeper/lookfor/coverage.svg?branch=master)](http://codecov.io/github/leeper/lookfor?branch=master)
+[![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
 
 The latest development version on GitHub can be installed using **devtools**:
 
@@ -19,8 +20,6 @@ if(!require("devtools")){
 }
 install_github("leeper/lookfor")
 ```
-
-[![Build Status](https://travis-ci.org/leeper/lookfor.png?branch=master)](https://travis-ci.org/leeper/lookfor)
 
 ## Examples ##
 
@@ -52,6 +51,11 @@ The major weakness of Stata's `lookfor` command is that it relies only on a plai
 
 ### Look in a data.frame ###
 
+
+```r
+options(width = 100)
+```
+
 A basic use case is to search for an observation or a variable within a dataset.
 
 
@@ -70,8 +74,8 @@ lookin(USArrests, "Alaska")
 ## $class
 ## 
 ## $row.names
-##   Object Position  Match
-##  X[[3L]]        2 Alaska
+##  Object Position  Match
+##  X[[i]]        2 Alaska
 ```
 
 ```r
@@ -82,8 +86,8 @@ lookin(USArrests, "Assault")
 ```
 ## [1] Matches found for 'Assault' in attributes(USArrests):
 ## $names
-##   Object Position   Match
-##  X[[1L]]        2 Assault
+##  Object Position   Match
+##  X[[i]]        2 Assault
 ## 
 ## $class
 ## 
@@ -107,8 +111,8 @@ lookin(x, "car")
 ```
 ## [1] Matches found for 'car' in attributes(mtcars):
 ## $names
-##   Object Position Match
-##  X[[1L]]       11  carb
+##  Object Position Match
+##  X[[i]]       11  carb
 ## 
 ## $row.names
 ## 
@@ -142,6 +146,9 @@ lookfor("package")
 
 ```
 ## lookfor found matches for 'package' in the following locations...
+```
+
+```
 ## 
 ## Objects on search() path:
 ```
@@ -154,9 +161,7 @@ lookfor("package")
 ## package:grDevices                    5
 ## package:utils                        6
 ## package:datasets                     7
-## package:devtools                     8
-## package:methods                      9
-## package:base                        11
+## package:base                         9
 ```
 
 ```
@@ -165,206 +170,100 @@ lookfor("package")
 ```
 
 ```
-##        Namespace Object                                       
-##   [1,] base      $.package_version                            
-##   [2,] base      as.package_version                           
-##   [3,] base      find.package                                 
-##   [4,] base      format.packageInfo                           
-##   [5,] base      is.package_version                           
-##   [6,] base      package_version                              
-##   [7,] base      packageEvent                                 
-##   [8,] base      packageHasNamespace                          
-##   [9,] base      packageStartupMessage                        
-##  [10,] base      path.package                                 
-##  [11,] base      print.packageInfo                            
-##  [12,] devtools  add_desc_package                             
-##  [13,] devtools  as.package                                   
-##  [14,] devtools  available_packages                           
-##  [15,] devtools  bioc_packages                                
-##  [16,] devtools  check_package_name                           
-##  [17,] devtools  check_summary_package                        
-##  [18,] devtools  cran_packages                                
-##  [19,] devtools  dev_package_deps                             
-##  [20,] devtools  dev_packages                                 
-##  [21,] devtools  extract_package_name                         
-##  [22,] devtools  install_packages                             
-##  [23,] devtools  is.package                                   
-##  [24,] devtools  loaded_packages                              
-##  [25,] devtools  package_deps                                 
-##  [26,] devtools  package_find_repo                            
-##  [27,] devtools  package_info                                 
-##  [28,] devtools  package_root                                 
-##  [29,] devtools  package_url                                  
-##  [30,] devtools  packages                                     
-##  [31,] devtools  print.package_deps                           
-##  [32,] devtools  print.packages_info                          
-##  [33,] devtools  update.package_deps                          
-##  [34,] devtools  update_packages                              
-##  [35,] devtools  use_package                                  
-##  [36,] devtools  use_package_doc                              
-##  [37,] git2r     bundle_r_package                             
-##  [38,] httr      need_package                                 
-##  [39,] knitr     has_package                                  
-##  [40,] methods   packageSlot                                  
-##  [41,] methods   packageSlot<-                                
-##  [42,] Rcpp      Rcpp.package.skeleton                        
-##  [43,] tools     check_packages_in_dir                        
-##  [44,] tools     check_packages_in_dir_details                
-##  [45,] tools     check_packages_in_dir_results                
-##  [46,] tools     format.check_code_usage_in_package           
-##  [47,] tools     format.check_package_code_assign_to_globalenv
-##  [48,] tools     format.check_package_code_attach             
-##  [49,] tools     format.check_package_code_data_into_globalenv
-##  [50,] tools     format.check_package_code_startup_functions  
-##  [51,] tools     format.check_package_code_unload_functions   
-##  [52,] tools     format.check_package_CRAN_incoming           
-##  [53,] tools     format.check_package_datasets                
-##  [54,] tools     format.check_package_depends                 
-##  [55,] tools     format.check_package_description_encoding    
-##  [56,] tools     format.check_package_description2            
-##  [57,] tools     format.check_package_license                 
-##  [58,] tools     format.check_packages_used                   
-##  [59,] tools     package.dependencies                         
-##  [60,] tools     package_dependencies                         
-##  [61,] tools     print.check_package_code_syntax              
-##  [62,] tools     print.check_package_compact_datasets         
-##  [63,] tools     print.check_package_description              
-##  [64,] tools     summarize_check_packages_in_dir_depends      
-##  [65,] tools     summarize_check_packages_in_dir_results      
-##  [66,] tools     summarize_check_packages_in_dir_timings      
-##  [67,] tools     toHTML.packageIQR                            
-##  [68,] utils     aspell_control_package_vignettes             
-##  [69,] utils     aspell_package_C_files                       
-##  [70,] utils     aspell_package_description                   
-##  [71,] utils     aspell_package_pot_files                     
-##  [72,] utils     aspell_package_R_files                       
-##  [73,] utils     aspell_package_Rd_files                      
-##  [74,] utils     aspell_package_vignettes                     
-##  [75,] utils     available.packages                           
-##  [76,] utils     available_packages_filters_db                
-##  [77,] utils     available_packages_filters_default           
-##  [78,] utils     CRAN.packages                                
-##  [79,] utils     download.packages                            
-##  [80,] utils     filter_packages_by_depends_predicates        
-##  [81,] utils     install.packages                             
-##  [82,] utils     installed.packages                           
-##  [83,] utils     make.packages.html                           
-##  [84,] utils     new.packages                                 
-##  [85,] utils     old.packages                                 
-##  [86,] utils     package.skeleton                             
-##  [87,] utils     packageDescription                           
-##  [88,] utils     packageName                                  
-##  [89,] utils     packageStatus                                
-##  [90,] utils     packageVersion                               
-##  [91,] utils     print.packageDescription                     
-##  [92,] utils     print.packageIQR                             
-##  [93,] utils     print.packageStatus                          
-##  [94,] utils     print.summary.packageStatus                  
-##  [95,] utils     remove.packages                              
-##  [96,] utils     summary.packageStatus                        
-##  [97,] utils     update.packages                              
-##  [98,] utils     update.packageStatus                         
-##  [99,] utils     upgrade.packageStatus                        
-##        Position in Namespace
-##   [1,] 11                   
-##   [2,] 207                  
-##   [3,] 438                  
-##   [4,] 461                  
-##   [5,] 572                  
-##   [6,] 747                  
-##   [7,] 748                  
-##   [8,] 749                  
-##   [9,] 750                  
-##  [10,] 761                  
-##  [11,] 797                  
-##  [12,] 5                    
-##  [13,] 15                   
-##  [14,] 20                   
-##  [15,] 22                   
-##  [16,] 44                   
-##  [17,] 46                   
-##  [18,] 66                   
-##  [19,] 79                   
-##  [20,] 80                   
-##  [21,] 98                   
-##  [22,] 160                  
-##  [23,] 169                  
-##  [24,] 190                  
-##  [25,] 206                  
-##  [26,] 207                  
-##  [27,] 208                  
-##  [28,] 209                  
-##  [29,] 210                  
-##  [30,] 211                  
-##  [31,] 225                  
-##  [32,] 226                  
-##  [33,] 327                  
-##  [34,] 328                  
-##  [35,] 342                  
-##  [36,] 343                  
-##  [37,] 14                   
-##  [38,] 99                   
-##  [39,] 87                   
-##  [40,] 193                  
-##  [41,] 194                  
-##  [42,] 67                   
-##  [43,] 32                   
-##  [44,] 33                   
-##  [45,] 34                   
-##  [46,] 95                   
-##  [47,] 101                  
-##  [48,] 102                  
-##  [49,] 103                  
-##  [50,] 104                  
-##  [51,] 105                  
-##  [52,] 106                  
-##  [53,] 107                  
-##  [54,] 108                  
-##  [55,] 109                  
-##  [56,] 110                  
-##  [57,] 111                  
-##  [58,] 112                  
-##  [59,] 196                  
-##  [60,] 197                  
-##  [61,] 246                  
-##  [62,] 247                  
-##  [63,] 248                  
-##  [64,] 344                  
-##  [65,] 345                  
-##  [66,] 346                  
-##  [67,] 365                  
-##  [68,] 32                   
-##  [69,] 41                   
-##  [70,] 42                   
-##  [71,] 43                   
-##  [72,] 44                   
-##  [73,] 45                   
-##  [74,] 46                   
-##  [75,] 56                   
-##  [76,] 57                   
-##  [77,] 58                   
-##  [78,] 151                  
-##  [79,] 165                  
-##  [80,] 180                  
-##  [81,] 241                  
-##  [82,] 242                  
-##  [83,] 253                  
-##  [84,] 272                  
-##  [85,] 277                  
-##  [86,] 278                  
-##  [87,] 279                  
-##  [88,] 280                  
-##  [89,] 281                  
-##  [90,] 282                  
-##  [91,] 304                  
-##  [92,] 305                  
-##  [93,] 306                  
-##  [94,] 311                  
-##  [95,] 345                  
-##  [96,] 401                  
-##  [97,] 438                  
-##  [98,] 439                  
-##  [99,] 441
+##       Namespace Object                                        Position in Namespace
+##  [1,] tools     check_packages_in_dir                         33                   
+##  [2,] tools     check_packages_in_dir_changes                 34                   
+##  [3,] tools     check_packages_in_dir_details                 35                   
+##  [4,] tools     check_packages_in_dir_results                 36                   
+##  [5,] tools     check_packages_in_dir_results_summary         37                   
+##  [6,] tools     CRAN_package_db                               73                   
+##  [7,] tools     format.check_code_usage_in_package            110                  
+##  [8,] tools     format.check_package_code_assign_to_globalenv 116                  
+##  [9,] tools     format.check_package_code_attach              117                  
+## [10,] tools     format.check_package_code_data_into_globalenv 118                  
+## [11,] tools     format.check_package_code_startup_functions   119                  
+## [12,] tools     format.check_package_code_unload_functions    120                  
+## [13,] tools     format.check_package_CRAN_incoming            121                  
+## [14,] tools     format.check_package_datasets                 122                  
+## [15,] tools     format.check_package_depends                  123                  
+## [16,] tools     format.check_package_description_encoding     124                  
+## [17,] tools     format.check_package_description2             125                  
+## [18,] tools     format.check_package_license                  126                  
+## [19,] tools     format.check_packages_in_dir_changes          127                  
+## [20,] tools     format.check_packages_used                    128                  
+## [21,] tools     package.dependencies                          221                  
+## [22,] tools     package_dependencies                          222                  
+## [23,] tools     print.check_package_code_syntax               273                  
+## [24,] tools     print.check_package_compact_datasets          274                  
+## [25,] tools     print.check_package_description               275                  
+## [26,] tools     print.check_packages_in_dir                   276                  
+## [27,] tools     print.check_packages_in_dir_changes           277                  
+## [28,] tools     Rd_package_author                             317                  
+## [29,] tools     Rd_package_description                        318                  
+## [30,] tools     Rd_package_DESCRIPTION                        319                  
+## [31,] tools     Rd_package_indices                            320                  
+## [32,] tools     Rd_package_maintainer                         321                  
+## [33,] tools     Rd_package_title                              322                  
+## [34,] tools     summarize_check_packages_in_dir_depends       384                  
+## [35,] tools     summarize_check_packages_in_dir_results       385                  
+## [36,] tools     summarize_check_packages_in_dir_timings       386                  
+## [37,] tools     summary.check_packages_in_dir                 389                  
+## [38,] tools     toHTML.packageIQR                             408                  
+## [39,] tools     url_db_from_installed_packages                418                  
+## [40,] tools     url_db_from_package_citation                  419                  
+## [41,] tools     url_db_from_package_HTML_files                420                  
+## [42,] tools     url_db_from_package_metadata                  421                  
+## [43,] tools     url_db_from_package_news                      422                  
+## [44,] tools     url_db_from_package_Rd_db                     423                  
+## [45,] tools     url_db_from_package_README_md                 424                  
+## [46,] tools     url_db_from_package_sources                   425                  
+## [47,] utils     aspell_control_package_vignettes              32                   
+## [48,] utils     aspell_package                                41                   
+## [49,] utils     aspell_package_C_files                        42                   
+## [50,] utils     aspell_package_description                    43                   
+## [51,] utils     aspell_package_pot_files                      44                   
+## [52,] utils     aspell_package_R_files                        45                   
+## [53,] utils     aspell_package_Rd_files                       46                   
+## [54,] utils     aspell_package_vignettes                      47                   
+## [55,] utils     available.packages                            57                   
+## [56,] utils     available_packages_filters_db                 58                   
+## [57,] utils     available_packages_filters_default            59                   
+## [58,] utils     CRAN.packages                                 152                  
+## [59,] utils     download.packages                             166                  
+## [60,] utils     filter_packages_by_depends_predicates         181                  
+## [61,] utils     install.packages                              248                  
+## [62,] utils     installed.packages                            249                  
+## [63,] utils     make.packages.html                            261                  
+## [64,] utils     new.packages                                  280                  
+## [65,] utils     old.packages                                  285                  
+## [66,] utils     package.skeleton                              286                  
+## [67,] utils     packageDescription                            287                  
+## [68,] utils     packageName                                   288                  
+## [69,] utils     packageStatus                                 289                  
+## [70,] utils     packageVersion                                290                  
+## [71,] utils     print.packageDescription                      313                  
+## [72,] utils     print.packageIQR                              314                  
+## [73,] utils     print.packageStatus                           315                  
+## [74,] utils     print.summary.packageStatus                   320                  
+## [75,] utils     remove.packages                               354                  
+## [76,] utils     summary.packageStatus                         411                  
+## [77,] utils     update.packages                               448                  
+## [78,] utils     update.packageStatus                          449                  
+## [79,] utils     upgrade.packageStatus                         451                  
+## [80,] knitr     has_package                                   93                   
+## [81,] methods   packageSlot                                   196                  
+## [82,] methods   packageSlot<-                                 197                  
+## [83,] base      $.package_version                             11                   
+## [84,] base      as.package_version                            211                  
+## [85,] base      find.package                                  450                  
+## [86,] base      format.packageInfo                            474                  
+## [87,] base      is.package_version                            587                  
+## [88,] base      package_version                               765                  
+## [89,] base      packageEvent                                  766                  
+## [90,] base      packageHasNamespace                           767                  
+## [91,] base      packageStartupMessage                         768                  
+## [92,] base      path.package                                  779                  
+## [93,] base      print.packageInfo                             816
 ```
 
 ```
@@ -385,6 +284,9 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 
 ```
 ## lookfor found matches for '[[:alpha:]]+ [[:digit:]]' in the following locations...
+```
+
+```
 ## 
 ## Within objects from global environment:
 ```
@@ -431,7 +333,7 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## attr(,"class")
 ## [1] "lookin"
 ## attr(,"object")
-## [1] "X[[10L]]"
+## [1] "X[[i]]"
 ## attr(,"what")
 ## [1] "[[:alpha:]]+ [[:digit:]]"
 ## 
@@ -444,12 +346,12 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## attr(,"class")
 ## [1] "lookin"
 ## attr(,"object")
-## [1] "X[[11L]]"
+## [1] "X[[i]]"
 ## attr(,"what")
 ## [1] "[[:alpha:]]+ [[:digit:]]"
 ## 
 ## $model
-## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(X[[12L]]):
+## [1] Matches found for '[[:alpha:]]+ [[:digit:]]' in attributes(X[[i]]):
 ## $names
 ## 
 ## $terms
@@ -461,25 +363,25 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## attr(,"class")
 ## [1] "lookin"
 ## attr(,"object")
-## [1] "X[[2L]]"
+## [1] "X[[i]]"
 ## attr(,"what")
 ## [1] "[[:alpha:]]+ [[:digit:]]"
 ## 
 ## $row.names
-##   Object Position          Match
-##  X[[3L]]        3     Datsun 710
-##  X[[3L]]        4 Hornet 4 Drive
-##  X[[3L]]        7     Duster 360
-##  X[[3L]]        8      Merc 240D
-##  X[[3L]]        9       Merc 230
-##  X[[3L]]       10       Merc 280
-##  X[[3L]]       11      Merc 280C
-##  X[[3L]]       12     Merc 450SE
-##  X[[3L]]       13     Merc 450SL
-##  X[[3L]]       14    Merc 450SLC
-##  X[[3L]]       18       Fiat 128
-##  X[[3L]]       27  Porsche 914-2
-##  X[[3L]]       32     Volvo 142E
+##  Object Position          Match
+##  X[[i]]        3     Datsun 710
+##  X[[i]]        4 Hornet 4 Drive
+##  X[[i]]        7     Duster 360
+##  X[[i]]        8      Merc 240D
+##  X[[i]]        9       Merc 230
+##  X[[i]]       10       Merc 280
+##  X[[i]]       11      Merc 280C
+##  X[[i]]       12     Merc 450SE
+##  X[[i]]       13     Merc 450SL
+##  X[[i]]       14    Merc 450SLC
+##  X[[i]]       18       Fiat 128
+##  X[[i]]       27  Porsche 914-2
+##  X[[i]]       32     Volvo 142E
 ## 
 ## $class
 ## 
@@ -492,20 +394,20 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-##   Object Position          Match
-##  X[[2L]]        3     Datsun 710
-##  X[[2L]]        4 Hornet 4 Drive
-##  X[[2L]]        7     Duster 360
-##  X[[2L]]        8      Merc 240D
-##  X[[2L]]        9       Merc 230
-##  X[[2L]]       10       Merc 280
-##  X[[2L]]       11      Merc 280C
-##  X[[2L]]       12     Merc 450SE
-##  X[[2L]]       13     Merc 450SL
-##  X[[2L]]       14    Merc 450SLC
-##  X[[2L]]       18       Fiat 128
-##  X[[2L]]       27  Porsche 914-2
-##  X[[2L]]       32     Volvo 142E
+##  Object Position          Match
+##  X[[i]]        3     Datsun 710
+##  X[[i]]        4 Hornet 4 Drive
+##  X[[i]]        7     Duster 360
+##  X[[i]]        8      Merc 240D
+##  X[[i]]        9       Merc 230
+##  X[[i]]       10       Merc 280
+##  X[[i]]       11      Merc 280C
+##  X[[i]]       12     Merc 450SE
+##  X[[i]]       13     Merc 450SL
+##  X[[i]]       14    Merc 450SLC
+##  X[[i]]       18       Fiat 128
+##  X[[i]]       27  Porsche 914-2
+##  X[[i]]       32     Volvo 142E
 ## 
 ## $class
 ## 
@@ -513,20 +415,20 @@ lookfor("[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-##   Object Position          Match
-##  X[[2L]]        3     Datsun 710
-##  X[[2L]]        4 Hornet 4 Drive
-##  X[[2L]]        7     Duster 360
-##  X[[2L]]        8      Merc 240D
-##  X[[2L]]        9       Merc 230
-##  X[[2L]]       10       Merc 280
-##  X[[2L]]       11      Merc 280C
-##  X[[2L]]       12     Merc 450SE
-##  X[[2L]]       13     Merc 450SL
-##  X[[2L]]       14    Merc 450SLC
-##  X[[2L]]       18       Fiat 128
-##  X[[2L]]       27  Porsche 914-2
-##  X[[2L]]       32     Volvo 142E
+##  Object Position          Match
+##  X[[i]]        3     Datsun 710
+##  X[[i]]        4 Hornet 4 Drive
+##  X[[i]]        7     Duster 360
+##  X[[i]]        8      Merc 240D
+##  X[[i]]        9       Merc 230
+##  X[[i]]       10       Merc 280
+##  X[[i]]       11      Merc 280C
+##  X[[i]]       12     Merc 450SE
+##  X[[i]]       13     Merc 450SL
+##  X[[i]]       14    Merc 450SLC
+##  X[[i]]       18       Fiat 128
+##  X[[i]]       27  Porsche 914-2
+##  X[[i]]       32     Volvo 142E
 ## 
 ## $class
 ```
@@ -545,20 +447,20 @@ lookin(mtcars, "[[:alpha:]]+ [[:digit:]]")
 ## $names
 ## 
 ## $row.names
-##   Object Position          Match
-##  X[[2L]]        3     Datsun 710
-##  X[[2L]]        4 Hornet 4 Drive
-##  X[[2L]]        7     Duster 360
-##  X[[2L]]        8      Merc 240D
-##  X[[2L]]        9       Merc 230
-##  X[[2L]]       10       Merc 280
-##  X[[2L]]       11      Merc 280C
-##  X[[2L]]       12     Merc 450SE
-##  X[[2L]]       13     Merc 450SL
-##  X[[2L]]       14    Merc 450SLC
-##  X[[2L]]       18       Fiat 128
-##  X[[2L]]       27  Porsche 914-2
-##  X[[2L]]       32     Volvo 142E
+##  Object Position          Match
+##  X[[i]]        3     Datsun 710
+##  X[[i]]        4 Hornet 4 Drive
+##  X[[i]]        7     Duster 360
+##  X[[i]]        8      Merc 240D
+##  X[[i]]        9       Merc 230
+##  X[[i]]       10       Merc 280
+##  X[[i]]       11      Merc 280C
+##  X[[i]]       12     Merc 450SE
+##  X[[i]]       13     Merc 450SL
+##  X[[i]]       14    Merc 450SLC
+##  X[[i]]       18       Fiat 128
+##  X[[i]]       27  Porsche 914-2
+##  X[[i]]       32     Volvo 142E
 ## 
 ## $class
 ```
@@ -580,6 +482,9 @@ lookfor("model using", fixed = TRUE)
 
 ```
 ## lookfor found matches for 'model using' in the following locations...
+```
+
+```
 ## 
 ## Within objects from global environment:
 ```

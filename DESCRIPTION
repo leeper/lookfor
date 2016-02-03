@@ -1,11 +1,11 @@
 Package: lookfor
 Type: Package
 Title: Find What You're Looking For
-Version: 0.1.1
-Date: 2015-06-17
+Version: 0.1.2
+Date: 2016-02-03
 Maintainer: Thomas J. Leeper <thosjleeper@gmail.com>
 Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"), email = "thosjleeper@gmail.com"))
 Description: This is an R port of Stata's 'lookfor' command, which helps you find stuff you are looking for inside a dataset (e.g., variables, variable values, variable labels, etc.).
 License: GPL-2
-Suggests: knitr, testthat
+Suggests: datasets, knitr, testthat
 VignetteBuilder: knitr
