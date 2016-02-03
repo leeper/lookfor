@@ -9,7 +9,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/leeper/lookfor.png?branch=master)](https://travis-ci.org/leeper/lookfor)
 [![Codecov](http://www.r-pkg.org/badges/version/lookfor)](http://cran.r-project.org/web/packages/lookfor/)
 [![codecov.io](http://codecov.io/github/leeper/lookfor/coverage.svg?branch=master)](http://codecov.io/github/leeper/lookfor?branch=master)
-[![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/0.1.0/wip.svg)](http://www.repostatus.org/#wip)
+[![Project Status: Wip - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
 
 The latest development version on GitHub can be installed using **devtools**:
 
