@@ -120,8 +120,7 @@ lookin.pairlist <- function(x, what, object.name, ...) {
 }
 
 lookin.matrix <- function(x, what, object.name, ...) {
-    if(class(x) != 'matrix')
-        stop("Object must be a matrix")
+    stopifnot("Object must be a matrix"=inherits(x, "matrix"))
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
