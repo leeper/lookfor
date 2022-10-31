@@ -75,8 +75,7 @@ lookin.factor <- function(x, what, object.name, ...) {
 }
 
 lookin.data.frame <- function(x, what, object.name, ...) {
-    if(class(x) != 'data.frame')
-        stop("Object must be a data.frame")
+    stopifnot("Object must be a data.frame"=inherits(x, "data.frame"))
     structure(list(attributes = .in_attributes(x, what, 
                                    if(missing(object.name)) deparse(substitute(x)) else object.name, ...),
                    comment = .in_comment(x, what, ...),
