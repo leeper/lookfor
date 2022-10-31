@@ -75,14 +75,13 @@ lookin.factor <- function(x, what, object.name, ...) {
 }
 
 lookin.data.frame <- function(x, what, object.name, ...) {
-    if(class(x) != 'data.frame')
-        stop("Object must be a data.frame")
-    structure(list(attributes = .in_attributes(x, what, 
-                                   if(missing(object.name)) deparse(substitute(x)) else object.name, ...),
+    stopifnot("Object must be a data.frame"=inherits(x, "data.frame"))
+    if(missing(object.name)) object.name <- deparse(substitute(x)) else object.name
+    structure(list(attributes = .in_attributes(x, what, ...),
                    comment = .in_comment(x, what, ...),
-                   variables = lapply(x, lookin, what = what, ...)), 
+                   variables = mapply(lookin, x, what = what, object.name=paste0(object.name, '$', colnames(x)), ...)), 
               class = "lookin.data.frame",
-              object = if(missing(object.name)) deparse(substitute(x)) else object.name,
+              object = object.name,
               what = what)
 }
 
@@ -121,8 +120,7 @@ lookin.pairlist <- function(x, what, object.name, ...) {
 }
 
 lookin.matrix <- function(x, what, object.name, ...) {
-    if(class(x) != 'matrix')
-        stop("Object must be a matrix")
+    stopifnot("Object must be a matrix"=inherits(x, "matrix"))
     structure(
     c(setNames(.in_values(x, what, ...), "values"),
       setNames(.in_comment(x, what, ...), "comment"),
