@@ -79,7 +79,7 @@ lookin.data.frame <- function(x, what, object.name, ...) {
     if(missing(object.name)) object.name <- deparse(substitute(x)) else object.name
     structure(list(attributes = .in_attributes(x, what, ...),
                    comment = .in_comment(x, what, ...),
-                   variables = mapply(lookin, x, what = what, object.name=paste0(object.name, '$', colnames(x)) ...)), 
+                   variables = mapply(lookin, x, what = what, object.name=paste0(object.name, '$', colnames(x)), ...)), 
               class = "lookin.data.frame",
               object = object.name,
               what = what)
